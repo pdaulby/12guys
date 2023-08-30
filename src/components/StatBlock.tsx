@@ -1,13 +1,18 @@
 import React from "react";
 import './StatBlock.css';
 import AbilityScores from "../models/AbilityScores";
+import { allowedClasses } from "../scripts/MinimumScores";
 
 const StatBlock: React.FC<AbilityScores> =
  (scores) => {
     return (
+        <>
         <div className="StatBlock">
-          {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))}
+            {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))}
+
         </div>
+        <div/>{allowedClasses(scores).join(', ')}
+        </>
     )
 }
 
