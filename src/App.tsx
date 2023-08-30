@@ -2,26 +2,36 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import StatBlock from './components/StatBlock';
+import AbilityScores from './models/AbilityScores';
 
 function App() {
+  let scores: AbilityScores[] = Array.from(Array(12)).map(createScores);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <StatBlock Strength={18} Dexterity={17} Constitution={0} Intelligence={0} Wisdom={0} Charisma={0} />
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Resdddsdact
-        </a>
+        {scores.map((s) => (<div><StatBlock {...s} /></div>))}
       </header>
     </div>
   );
 }
 
 export default App;
+
+
+function createScores(): AbilityScores {
+  return {
+    Strength: roll3D6(),
+    Dexterity: roll3D6(),
+    Constitution: roll3D6(),
+    Intelligence: roll3D6(),
+    Wisdom: roll3D6(),
+    Charisma: roll3D6()
+  };
+}
+function roll3D6(): number {
+  return rollD6() + rollD6() + rollD6();
+}
+function rollD6(): number {
+  return Math.floor(Math.random() * 6) + 1;
+}

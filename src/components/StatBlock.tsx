@@ -5,9 +5,9 @@ import AbilityScores from "../models/AbilityScores";
 const StatBlock: React.FC<AbilityScores> =
  (scores) => {
     return (
-        <>
-        {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))}
-        </>
+        <div className="StatBlock">
+          {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))}
+        </div>
     )
 }
 
@@ -18,7 +18,7 @@ interface StatProps {
 const StatBox: React.FC<StatProps> =
  ({name, stat}) => {
     return (
-        <div>{name}: {stat} </div>
+        <div className="StatBox">{name.substring(0, 3)}: {stat} </div>
     )
 }
 
