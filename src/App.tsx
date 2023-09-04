@@ -35,3 +35,7 @@ function roll3D6(): number {
 function rollD6(): number {
   return Math.floor(Math.random() * 6) + 1;
 }
+
+function rollD4Minus1(): number {
+  return Array.from(Array(4)).map(rollD6).sort((a, b)=>b-a).slice(0, 3).reduce((a,b)=>a+b, 0);
+}

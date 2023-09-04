@@ -22,3 +22,5 @@ export default class AbilityScores {
             this.Charisma = Charisma;
     }
 }
+
+export type AbilityNames = 'Strength' | 'Dexterity' | 'Constitution' | 'Intelligence' | 'Wisdom' | 'Charisma';

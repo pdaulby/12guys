@@ -6,9 +6,6 @@ export default function compareScores(a: AbilityScores, b: AbilityScores) {
     av.sort((a, b)=>b-a);
     bv.sort((a, b)=>b-a);
 
-    console.log(av)
-    console.log(bv)
-
     for (let i = 0; i < 6; i++) {
         if (av[i] > bv[i])
             return -1;
