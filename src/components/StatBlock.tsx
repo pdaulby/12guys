@@ -23,7 +23,7 @@ interface StatProps {
 const StatBox: React.FC<StatProps> =
  ({name, stat}) => {
     return (
-        <div className="StatBox">{name.substring(0, 3)}: {stat} </div>
+        <div className={"StatBox " + (stat>=15&&"HighStat ")}>{name.substring(0, 3)}: {stat} </div>
     )
 }
 
