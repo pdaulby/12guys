@@ -20,5 +20,4 @@ class CharacterStore {
 }
 
 const store = new CharacterStore();
-// export default store;
-export default 'dd';
+export default store;

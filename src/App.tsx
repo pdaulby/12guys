@@ -2,17 +2,22 @@ import React from 'react';
 import './App.css';
 import AbilityScores from './models/AbilityScores';
 import TwelveGuys from './components/TwelveGuys';
+import Store from './store/Store';
+import { observer } from 'mobx-react';
 
-function App() {
+const App: React.FC = observer(() => {
   let scores: AbilityScores[] = Array.from(Array(12)).map(createScores);
+  
   return (
     <div className="App">
+      <div>Race: {Store.race}</div>
       <header className="App-header">
+        <button onClick={()=>Store.chooseRace('HalfOrk')}>choose race</button>
         <TwelveGuys scores={scores}></TwelveGuys>
       </header>
     </div>
   );
-}
+});
 
 export default App;
 
