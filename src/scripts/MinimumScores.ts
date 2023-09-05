@@ -106,7 +106,7 @@ export const MinumumScores = {
     Monk: Monk,
     Druid: Druid,
     Ranger: Ranger,
-    //Assassin: Assassin,
+    Assassin: Assassin,
     Fighter: Fighter,
     Cleric: Cleric,
     MagicUser: MagicUser,

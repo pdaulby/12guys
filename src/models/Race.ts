@@ -1,0 +1,1 @@
+export type Race = 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'Halfling' | 'HalfOrk' | 'Human'
