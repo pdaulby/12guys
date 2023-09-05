@@ -1,16 +1,14 @@
 import React from 'react';
 import './App.css';
-import StatBlock from './components/StatBlock';
 import AbilityScores from './models/AbilityScores';
-import compareScores from './scripts/SortScores';
+import TwelveGuys from './components/TwelveGuys';
 
 function App() {
   let scores: AbilityScores[] = Array.from(Array(12)).map(createScores);
-  scores.sort(compareScores)
   return (
     <div className="App">
       <header className="App-header">
-        {scores.map((s) => (<div><StatBlock {...s} /></div>))}
+        <TwelveGuys scores={scores}></TwelveGuys>
       </header>
     </div>
   );
