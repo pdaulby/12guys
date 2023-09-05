@@ -13,10 +13,12 @@ class CharacterStore {
             chooseRace: action,
             twelveGuys: observable,
             generateTwelveGuys: action,
+            stage: computed
         });
     }
     chooseRace = (race: Race) => this.race = race;
     generateTwelveGuys = (abilityScores: AbilityScores[]) => this.twelveGuys = abilityScores;
+    get stage() { return !this.race? 0 : 1}
 }
 
 const store = new CharacterStore();

@@ -4,23 +4,37 @@ import AbilityScores from './models/AbilityScores';
 import TwelveGuys from './components/TwelveGuys';
 import Store from './store/Store';
 import { observer } from 'mobx-react';
+import { Race } from './models/Race';
+import ChooseRace from './components/ChooseRace';
 
 const App: React.FC = observer(() => {
-  let scores: AbilityScores[] = Array.from(Array(12)).map(createScores);
-  
+  //Store.staged is referenced here to make the observables active
   return (
     <div className="App">
-      <div>Race: {Store.race}</div>
-      <header className="App-header">
-        <button onClick={()=>Store.chooseRace('HalfOrk')}>choose race</button>
-        <TwelveGuys scores={scores}></TwelveGuys>
-      </header>
+      <Header />
+      <Body stage={Store.stage} /> 
     </div>
   );
 });
 
+const Body: React.FC<{stage: 0 | 1}> = ({stage}) => {
+  switch (stage) {
+    case 0:
+     return (<ChooseRace/>);
+    case 1:
+      let scores: AbilityScores[] = Array.from(Array(12)).map(createScores);
+      return (<TwelveGuys scores={scores}></TwelveGuys>);
+  }
+}
+
+
 export default App;
 
+const Header: React.FC = () => {
+  return (<header className="App-header">
+  {Store.stage}  Race: {Store.race}
+  </header>)
+}
 
 function createScores(): AbilityScores {
   return {
