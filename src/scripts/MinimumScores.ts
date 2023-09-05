@@ -1,4 +1,5 @@
 import AbilityScores from "../models/AbilityScores";
+import { ClassName } from "../models/Class";
 
 const Fighter: AbilityScores = {
     Strength: 9, //15 10
@@ -99,24 +100,25 @@ const Monk: AbilityScores = {
     Charisma: 6
 }
 
-export const MinumumScores = {
-    Paladin: Paladin,
-    Illusionist: Illusionist,
-    Bard: Bard,
-    Monk: Monk,
-    Druid: Druid,
-    Ranger: Ranger,
-    Assassin: Assassin,
-    Fighter: Fighter,
-    Cleric: Cleric,
-    MagicUser: MagicUser,
-    Thief: Thief
-}
+export const MinumumScores = new Map<ClassName, AbilityScores> ([
+    ['Paladin', Paladin],
+    ['Illusionist', Illusionist],
+    ['Bard', Bard],
+    ['Monk', Monk],
+    ['Druid', Druid],
+    ['Ranger', Ranger],
+    ['Assassin', Assassin],
+    ['Fighter', Fighter],
+    ['Cleric', Cleric],
+    ['MagicUser', MagicUser],
+    ['Thief', Thief]
+])
 
-export function allowedClasses(scores: AbilityScores): string[] {
-    return Object.entries(MinumumScores)
+export function allowedClasses(scores: AbilityScores, disallowedClasses: ClassName[] = []): ClassName[] {
+    return Array.from(MinumumScores.entries())
+        .filter(e=>!disallowedClasses.includes(e[0]))
         .filter(e=>allowedClass(scores, e[1]))
-        .map(e=>e[0]);
+        .map(e=>e[0])
 }
 
 function allowedClass(actualScores: AbilityScores, requiredScores: AbilityScores): boolean {
