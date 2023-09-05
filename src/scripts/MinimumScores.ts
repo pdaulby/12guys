@@ -114,9 +114,9 @@ export const MinumumScores = new Map<ClassName, AbilityScores> ([
     ['Thief', Thief]
 ])
 
-export function allowedClasses(scores: AbilityScores, disallowedClasses: ClassName[] = []): ClassName[] {
+export function allowedClasses(scores: AbilityScores, allowedClasses: ClassName[] = []): ClassName[] {
     return Array.from(MinumumScores.entries())
-        .filter(e=>!disallowedClasses.includes(e[0]))
+        .filter(e=>allowedClasses.includes(e[0]))
         .filter(e=>allowedClass(scores, e[1]))
         .map(e=>e[0])
 }

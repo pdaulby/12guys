@@ -2,6 +2,7 @@
 export type BaseClass = 'Fighter' | 'Cleric' | 'MagicUser' | 'Thief' | 'Bard' | 'Monk';
 export type AdvancedClass = 'Paladin' | 'Illusionist' | 'Druid' | 'Ranger' | 'Assassin';
 export type ClassName = BaseClass | AdvancedClass;
+export const Classes: ClassName[] = ['Fighter', 'Cleric', 'MagicUser', 'Thief', 'Bard', 'Monk', 'Paladin', 'Illusionist', 'Druid', 'Ranger', 'Assassin'];
 
 function getCoreClass(className: ClassName): BaseClass {
     switch (className) {

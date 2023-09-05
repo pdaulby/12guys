@@ -1,4 +1,5 @@
 import AbilityScores from "./AbilityScores";
+import { ClassName, Classes } from "./Class";
 
 export type Race = 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'Halfling' | 'HalfOrk' | 'Human';
 export const Races: Race[] = ['Human', 'Dwarf', 'Elf', 'Gnome', 'HalfElf', 'Halfling', 'HalfOrk']
@@ -135,3 +136,14 @@ export const RacialScoreMax = new Map<Race, AbilityScores>([
     ['Halfling', halflingMax],
     ['HalfOrk', halfOrkMax],
 ])
+
+export const RaceClassRestrictions = new Map<Race, ClassName[]>([
+    ['Human', ['Cleric', 'Druid', 'Fighter', 'Paladin', 'Ranger', 'MagicUser', 'Illusionist', 'Thief', 'Assassin', 'Monk']],
+    ['Dwarf', ['Fighter', 'Thief', 'Assassin']],
+    ['Elf', ['Fighter', 'MagicUser', 'Thief', 'Assassin']],
+    ['Gnome', ['Fighter', 'MagicUser', 'Illusionist', 'Thief', 'Assassin']],
+    ['HalfElf', ['Cleric', 'Druid', 'Fighter', 'Ranger', 'MagicUser', 'Thief', 'Assassin']],
+    ['Halfling', ['Fighter', 'Thief']],
+    ['HalfOrk', ['Cleric', 'Fighter', 'Thief', 'Assassin']],
+])
+
