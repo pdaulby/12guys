@@ -11,7 +11,8 @@ export const ChoosableStatBlock: React.FC<AbilityScores> =
     return (<>
         <StatBlock {...scores} />
         <div className="ClassSelectContainer">
-            {allowedClasses(scores, RaceClassRestrictions.get(store.race!)).map(c=><ClassSelect className={c} abilityScores={scores} />)}
+            {allowedClasses(scores, RaceClassRestrictions.get(store.race!))
+                .map((c,i)=><ClassSelect key={i} className={c} abilityScores={scores} />)}
         </div>
     </>)
 }

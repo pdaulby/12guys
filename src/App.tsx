@@ -7,6 +7,7 @@ import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
 import { StatBlock } from './components/StatBlock';
+import { RollDetails } from './components/RollDetails';
 
 //heights and weights https://annarchive.com/files/Drmg091.pdf
 const App: React.FC = observer(() => {
@@ -27,8 +28,7 @@ const Body: React.FC<{stage: 0 | 1 | 2}> = ({stage}) => {
       let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
       return (<TwelveGuys scores={scores}></TwelveGuys>);
     case 2: 
-      let storedScores = Store.abilityScores!; 
-      return <StatBlock {...storedScores} />
+      return <RollDetails />
   }
 }
 

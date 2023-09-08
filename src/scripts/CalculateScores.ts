@@ -39,7 +39,7 @@ export function createScores(): AbilityScores {
   }
 
   const sum3D6 = () => sumXDY(3, 6);
-  function sumXDY(x: number, y: number): number {
+  export function sumXDY(x: number, y: number): number {
     return rollXDY(x, y).reduce(sum, 0);
   }
   function rollD4Minus1(): number {

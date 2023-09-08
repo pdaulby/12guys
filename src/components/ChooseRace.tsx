@@ -4,7 +4,7 @@ import store from "../store/Store";
 import { Race, RaceAbilitiesSmall, RaceClassRestrictions, Races, RacialScoreAdjustment } from "../models/Race";
 import { AbilityNames } from "../models/AbilityScores";
 
-const ChooseRace: React.FC = () => (<>{Races.map(race => <RaceOverview race={race} />)} </>);
+const ChooseRace: React.FC = () => (<>{Races.map(race => <RaceOverview key={race} race={race} />)} </>);
 
 const RaceOverview: React.FC<{race: Race}> = ({race}) => {
     return (
@@ -27,14 +27,14 @@ const RaceScoreModifier: React.FC<{race: Race}> = ({race}) => {
     let adjustedAbility = AbilityNames.filter(ability=>adjustment[ability] != 0);
     return (
         <div className="ScoreModifier">
-            {adjustedAbility.map(ability=><div>{ability}: {adjustment[ability]>=0?'+':''}{adjustment[ability]}</div>)}
+            {adjustedAbility.map(ability=><div key={race+ability}>{ability}: {adjustment[ability]>=0?'+':''}{adjustment[ability]}</div>)}
         </div>
     )
 }
 
 
 const RaceAbilities: React.FC<{race: Race}> = 
-    ({race}) => <div className="RaceAbilities"> {RaceAbilitiesSmall.get(race)!.map(ability=><div>{ability}</div>)} </div>;
+    ({race}) => <div className="RaceAbilities"> {RaceAbilitiesSmall.get(race)!.map(ability=><div key={race+ability}>{ability}</div>)} </div>;
 
 const RaceClasses: React.FC<{race: Race}> = 
     ({race}) => <div className="RaceClasses"><b> {RaceClassRestrictions.get(race)!.join(', ')} </b></div>;

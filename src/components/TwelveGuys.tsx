@@ -8,7 +8,7 @@ const TwelveGuys: React.FC<{scores: AbilityScores[]}> =
     scores.sort(compareScores);
     return (
         <>
-        {scores.map((s) => (<div><ChoosableStatBlock {...s} /></div>))}
+        {scores.map((s, i) => (<ChoosableStatBlock key={'stats'+i} {...s} />))}
         </>
     )
 }
