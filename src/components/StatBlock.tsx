@@ -4,29 +4,25 @@ import AbilityScores from "../models/AbilityScores";
 import { allowedClasses } from "../scripts/MinimumScores";
 import { RaceClassRestrictions } from "../models/Race";
 import store from "../store/Store";
+import { ClassName } from "../models/Class";
 
-const StatBlock: React.FC<AbilityScores> =
+export const ChoosableStatBlock: React.FC<AbilityScores> =
  (scores) => {
-    return (
-        <>
-        <div className="StatBlock">
-            {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))}
-
+    return (<>
+        <StatBlock {...scores} />
+        <div className="ClassSelectContainer">
+            {allowedClasses(scores, RaceClassRestrictions.get(store.race!)).map(c=><ClassSelect className={c} abilityScores={scores} />)}
         </div>
-        <div/>{allowedClasses(scores, RaceClassRestrictions.get(store.race!)).join(', ')}
-        </>
-    )
+    </>)
 }
 
-interface StatProps {
-    name: string;
-    stat: number;
-}
-const StatBox: React.FC<StatProps> =
- ({name, stat}) => {
-    return (
-        <div className={"StatBox " + (stat>=15&&"HighStat ")}>{name.substring(0, 3)}: {stat} </div>
-    )
-}
+export const StatBlock: React.FC<AbilityScores> = (scores) => 
+    <div className="StatBlock"> {Object.entries(scores).map(([key, value]) => (<StatBox key={key} name={key} stat={value} />))} </div>
 
-export default StatBlock;
+const StatBox: React.FC<{name: string, stat: number}> = ({name, stat}) =>
+    <div className={'StatBox ' + (stat>=15&&'Rare ')}>{name.substring(0, 3)}: {stat} </div>
+
+const ClassSelect: React.FC<{className: ClassName, abilityScores: AbilityScores}> = ({className, abilityScores}) => {
+    let rare = ['Paladin', 'Illusionist', 'Druid', 'Ranger', 'Bard'].includes(className); 
+    return (<button className={'ClassSelect '+(rare?'Rare':'')} onClick={()=>store.chooseClass(className, abilityScores)}>{className}</button>)
+}

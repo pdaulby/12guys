@@ -1,16 +1,31 @@
-.StatBlock {
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto auto auto;
-}
-
 .StatBox {
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    font-size: 30px;
-    width: 100px;
-    text-align: center;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 30px;
+  width: 100px;
+  text-align: center;
 }
 
-.HighStat {
+.ClassSelectContainer {
+  margin-top: -10px;
+}
+
+.ClassSelect {
+  color: white;
+  background-color: #67799d;
+  margin: 4px;
+  padding: 4px;
+  display: inline-block;
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.ClassSelect:hover {
+  border-top: 1px;
+  text-decoration:wavy;
+}
+
+.Rare {
   color: greenyellow;
 }

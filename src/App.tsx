@@ -6,6 +6,7 @@ import Store from './store/Store';
 import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
+import { StatBlock } from './components/StatBlock';
 
 //heights and weights https://annarchive.com/files/Drmg091.pdf
 const App: React.FC = observer(() => {
@@ -18,21 +19,20 @@ const App: React.FC = observer(() => {
   );
 });
 
-const Body: React.FC<{stage: 0 | 1}> = ({stage}) => {
+const Body: React.FC<{stage: 0 | 1 | 2}> = ({stage}) => {
   switch (stage) {
     case 0:
      return (<ChooseRace/>);
     case 1:
       let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
       return (<TwelveGuys scores={scores}></TwelveGuys>);
+    case 2: 
+      let storedScores = Store.abilityScores!; 
+      return <StatBlock {...storedScores} />
   }
 }
 
 
 export default App;
 
-const Header: React.FC = () => {
-  return (<header className="App-header">
-  {Store.stage}  Race: {Store.race}
-  </header>)
-}
+const Header: React.FC = () => <header className="App-header">{Store.stage} {Store.race} {Store.className} </header>
