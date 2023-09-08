@@ -8,21 +8,27 @@ class CharacterStore {
      race: Race | undefined;
      className: ClassName | undefined;
      abilityScores: AbilityScores | undefined;
+     age: number | undefined;
 
     constructor() {
         makeObservable(this, {
             race: observable,
             chooseRace: action,
             className: observable,
-            chooseClass: observable,
             abilityScores: observable,
+            chooseClass: action,
+            age: observable,
+            chooseAge: action,
             stage: computed
         });
     }
     chooseRace = (race: Race) => this.race = race;
     chooseClass = (className: ClassName, abilityScores: AbilityScores) => 
         { this.className = className; this.abilityScores = abilityScores; };
-    get stage() { return !this.race? 0 : !this.className? 1 : 2}
+    chooseAge = (age: number) => this.age = age;
+    get stage() { return !this.race? 0 
+        : !this.className? 1 
+        : 2}
 }
 
 const store = new CharacterStore();

@@ -1,8 +1,8 @@
 import AbilityScores from "./AbilityScores";
 import { ClassName } from "./Class";
 
-export type Race = 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'Halfling' | 'HalfOrk' | 'Human';
-export const Races: Race[] = ['Human', 'Dwarf', 'Elf', 'Gnome', 'HalfElf', 'Halfling', 'HalfOrk']
+export type Race = 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'Halfling' | 'HalfOrc' | 'Human';
+export const Races: Race[] = ['Human', 'Dwarf', 'Elf', 'Gnome', 'HalfElf', 'Halfling', 'HalfOrc']
 
 const noChange: AbilityScores = {
     Strength: 0,
@@ -14,7 +14,7 @@ const noChange: AbilityScores = {
 }
 const dwarfChange : AbilityScores = {...noChange, Constitution: 1, Charisma: -1}
 const elfChange : AbilityScores = {...noChange, Dexterity: 1, Constitution: -1}
-const orkChange : AbilityScores = {...noChange, Strength: 1, Constitution: 1, Charisma: -2}
+const orcChange : AbilityScores = {...noChange, Strength: 1, Constitution: 1, Charisma: -2}
 const halflingChange : AbilityScores = {...noChange, Dexterity: 1, Strength: -1}
 
 const humanMin: AbilityScores = {
@@ -94,11 +94,11 @@ const halflingMax: AbilityScores = {
     Charisma: 18
 }
 
-const halfOrkMin: AbilityScores = { ...humanMin,
+const halfOrcMin: AbilityScores = { ...humanMin,
     Strength: 6,
     Constitution: 13
 }
-const halfOrkMax: AbilityScores = {
+const halfOrcMax: AbilityScores = {
     Strength: 18,
     Intelligence: 17,
     Wisdom: 14,
@@ -114,7 +114,7 @@ export const RacialScoreAdjustment = new Map<Race, AbilityScores>([
     ['Gnome', noChange],
     ['HalfElf', elfChange],
     ['Halfling', halflingChange],
-    ['HalfOrk', orkChange],
+    ['HalfOrc', orcChange],
 ])
 
 export const RacialScoreMin = new Map<Race, AbilityScores>([
@@ -124,7 +124,7 @@ export const RacialScoreMin = new Map<Race, AbilityScores>([
     ['Gnome', gnomeMin],
     ['HalfElf', halfElfMin],
     ['Halfling', halflingMin],
-    ['HalfOrk', halfOrkMin],
+    ['HalfOrc', halfOrcMin],
 ])
 
 export const RacialScoreMax = new Map<Race, AbilityScores>([
@@ -134,7 +134,7 @@ export const RacialScoreMax = new Map<Race, AbilityScores>([
     ['Gnome', gnomeMax],
     ['HalfElf', halfElfMax],
     ['Halfling', halflingMax],
-    ['HalfOrk', halfOrkMax],
+    ['HalfOrc', halfOrcMax],
 ])
 
 export const RaceClassRestrictions = new Map<Race, ClassName[]>([
@@ -144,7 +144,7 @@ export const RaceClassRestrictions = new Map<Race, ClassName[]>([
     ['Gnome', ['Fighter', 'MagicUser', 'Illusionist', 'Thief', 'Assassin']],
     ['HalfElf', ['Cleric', 'Druid', 'Fighter', 'Ranger', 'MagicUser', 'Thief', 'Assassin']],
     ['Halfling', ['Fighter', 'Thief']],
-    ['HalfOrk', ['Cleric', 'Fighter', 'Thief', 'Assassin']],
+    ['HalfOrc', ['Cleric', 'Fighter', 'Thief', 'Assassin']],
 ])
 
 export const RaceAbilitiesSmall = new Map<Race, String[]>([
@@ -154,7 +154,7 @@ export const RaceAbilitiesSmall = new Map<Race, String[]>([
     ['Gnome', ['Bonus to magic saves, Infravision', 'Greater Mining knowledge', '+1 to hit kobolds and goblins', 'large creatures get -4 to hit']],
     ['HalfElf', ['30% to resist sleep and charm spells', 'infravision', 'Find secret doors']],
     ['Halfling', ['Bonus to magic and poison saves', 'Infravision', 'Move silently']],
-    ['HalfOrk', ['Infravision', 'Minimum constitution 13']],
+    ['HalfOrc', ['Infravision', 'Minimum constitution 13']],
 ])
 
 
