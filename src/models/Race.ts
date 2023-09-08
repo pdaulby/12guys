@@ -138,11 +138,11 @@ export const RacialScoreMax = new Map<Race, AbilityScores>([
 ])
 
 export const RaceClassRestrictions = new Map<Race, ClassName[]>([
-    ['Human', ['Cleric', 'Druid', 'Fighter', 'Paladin', 'Ranger', 'MagicUser', 'Illusionist', 'Thief', 'Assassin', 'Monk']],
+    ['Human', ['Cleric', 'Druid', 'Fighter', 'Paladin', 'Ranger', 'MagicUser', 'Illusionist', 'Thief', 'Assassin', 'Monk', 'Bard']],
     ['Dwarf', ['Fighter', 'Thief', 'Assassin']],
     ['Elf', ['Fighter', 'MagicUser', 'Thief', 'Assassin']],
     ['Gnome', ['Fighter', 'MagicUser', 'Illusionist', 'Thief', 'Assassin']],
-    ['HalfElf', ['Cleric', 'Druid', 'Fighter', 'Ranger', 'MagicUser', 'Thief', 'Assassin']],
+    ['HalfElf', ['Cleric', 'Druid', 'Fighter', 'Ranger', 'MagicUser', 'Thief', 'Assassin', 'Bard']],
     ['Halfling', ['Fighter', 'Thief']],
     ['HalfOrc', ['Cleric', 'Fighter', 'Thief', 'Assassin']],
 ])

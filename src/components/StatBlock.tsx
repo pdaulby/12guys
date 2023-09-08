@@ -25,5 +25,6 @@ const StatBox: React.FC<{name: string, stat: number}> = ({name, stat}) =>
 
 const ClassSelect: React.FC<{className: ClassName, abilityScores: AbilityScores}> = ({className, abilityScores}) => {
     let rare = ['Paladin', 'Illusionist', 'Druid', 'Ranger', 'Bard'].includes(className); 
-    return (<button className={'ClassSelect '+(rare?'Rare':'')} onClick={()=>store.chooseClass(className, abilityScores)}>{className}</button>)
+    let starterClass: ClassName = className == 'Bard' ? 'Fighter' : className;
+    return (<button className={'ClassSelect '+(rare?'Rare':'')} onClick={()=>store.chooseClass(starterClass, abilityScores)}>{className}</button>)
 }
