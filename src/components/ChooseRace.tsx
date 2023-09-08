@@ -2,12 +2,11 @@ import React from "react";
 import './ChooseRace.css';
 import store from "../store/Store";
 import { Race, RaceAbilitiesSmall, RaceClassRestrictions, Races, RacialScoreAdjustment } from "../models/Race";
-import AbilityScores, { AbilityNames } from "../models/AbilityScores";
+import { AbilityNames } from "../models/AbilityScores";
 
 const ChooseRace: React.FC = () => (<>{Races.map(race => <RaceOverview race={race} />)} </>);
 
 const RaceOverview: React.FC<{race: Race}> = ({race}) => {
-    let g = 'blah<p>eep</p>'
     return (
         <div className="RaceOverview">
             <div className="p1">
