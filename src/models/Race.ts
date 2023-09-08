@@ -102,7 +102,7 @@ const halfOrkMax: AbilityScores = {
     Strength: 18,
     Intelligence: 17,
     Wisdom: 14,
-    Dexterity: 14,
+    Dexterity: 17,
     Constitution: 19,
     Charisma: 12
 }
