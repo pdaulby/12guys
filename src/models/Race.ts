@@ -1,5 +1,5 @@
 import AbilityScores from "./AbilityScores";
-import { ClassName, Classes } from "./Class";
+import { ClassName } from "./Class";
 
 export type Race = 'Dwarf' | 'Elf' | 'Gnome' | 'HalfElf' | 'Halfling' | 'HalfOrk' | 'Human';
 export const Races: Race[] = ['Human', 'Dwarf', 'Elf', 'Gnome', 'HalfElf', 'Halfling', 'HalfOrk']
@@ -147,3 +147,61 @@ export const RaceClassRestrictions = new Map<Race, ClassName[]>([
     ['HalfOrk', ['Cleric', 'Fighter', 'Thief', 'Assassin']],
 ])
 
+export const RaceAbilitiesSmall = new Map<Race, String[]>([
+    ['Human', ['No class maximum levels']],
+    ['Dwarf', ['Bonus to magic and poison saves', 'Infravision', 'Mining knowledge', '+1 to hit orcs and goblins', 'large creatures get -4 to hit']],
+    ['Elf', ['90% to resist sleep and charm spells', '+1 to hit with bows, short and long swords', 'Infravision, Find secret doors', 'Move silently']],
+    ['Gnome', ['Bonus to magic saves, Infravision', 'Greater Mining knowledge', '+1 to hit kobolds and goblins', 'large creatures get -4 to hit']],
+    ['HalfElf', ['30% to resist sleep and charm spells', 'infravision', 'Find secret doors']],
+    ['Halfling', ['Bonus to magic and poison saves', 'Infravision', 'Move silently']],
+    ['HalfOrk', ['Infravision', 'Minimum constitution 13']],
+])
+
+
+//dwarf
+// max level 9
+// bonus to magic and poison saving throws
+// dwarven gnome goblin kobold orcish common + learn 2 others
+// infravision: see 60 foot in the dark noting changes in heat radiation
+// mining knowledge: detect structural details within 10 foot if searching for them
+//   new passages, slopes, pit/falling traps, shifting walls/rooms
+// +1 to hit orcs, half orcs, goblins, hobgoblins
+// stout: large creatures get -4 to hit
+// max 16 char in regards to non dwarves
+
+//elves
+// max levels, fighter 7 thief assassin 10, magicUser 11.
+// 9/10 to resist sleep and charm spell, on top of a saving throw
+// +1 to hit with bows, short sword, long sword
+// languages
+// infravision: 
+// find secret doors: 1/6 passively, 2/6 actively looking, 3/6 to find secret passage
+// move silently: if not in metal armor and if all have move silently, 4/6 to suprise, 2/6 if opening a portal
+
+//gnome
+// max levels
+// bonus to magic saves
+// languages
+// infravision: 
+// mining knowledge +:
+// +1 to hit kobolds, goblins
+// stout:
+
+//half-elves
+// max levels
+// 3/10 to resist sleep and charm spells
+// languages
+// infravision:
+// find secret doors:
+
+//halfling
+// max levels
+// bonus to magic and poison saves
+// languages
+// infravision:
+// move silently:
+
+//half orc
+// max levels
+// languages
+// infravision

@@ -5,8 +5,9 @@ import TwelveGuys from './components/TwelveGuys';
 import Store from './store/Store';
 import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
-import { createAdjustedScore, createScores } from './scripts/CalculateScores';
+import { createViableScore } from './scripts/CalculateScores';
 
+//https://annarchive.com/files/Drmg091.pdf
 const App: React.FC = observer(() => {
   //Store.staged is referenced here to make the observables active
   return (
@@ -22,7 +23,7 @@ const Body: React.FC<{stage: 0 | 1}> = ({stage}) => {
     case 0:
      return (<ChooseRace/>);
     case 1:
-      let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createAdjustedScore(Store.race!));
+      let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
       return (<TwelveGuys scores={scores}></TwelveGuys>);
   }
 }

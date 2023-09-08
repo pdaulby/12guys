@@ -1,5 +1,13 @@
 import AbilityScores, { AbilityName, AbilityNames } from "../models/AbilityScores";
-import { Race, RacialScoreAdjustment, RacialScoreMax, RacialScoreMin } from "../models/Race";
+import { Race, RaceClassRestrictions, RacialScoreAdjustment, RacialScoreMax, RacialScoreMin } from "../models/Race";
+import { allowedClasses } from "./MinimumScores";
+
+export const createViableScore = (race: Race): AbilityScores => {
+  let scores = createAdjustedScore(race);
+  if (allowedClasses(scores, RaceClassRestrictions.get(race)).length == 0)
+    return createViableScore(race);
+  return scores;
+}
 
 export const createAdjustedScore = (race: Race) => {
     let scores = createScores();

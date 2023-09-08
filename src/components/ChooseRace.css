@@ -1,0 +1,22 @@
+.p1 {
+    margin-right: 10px;
+}
+.RaceOverview {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+.ScoreModifier {
+    font-size: small;
+}
+.Description {
+    min-width: 360px;
+    font-size: medium;
+}
+.RaceAbilities { 
+    margin-bottom: 10px;
+}
+.RaceClasses {
+    max-width: 360px;
+}
