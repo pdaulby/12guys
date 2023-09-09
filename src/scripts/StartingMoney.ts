@@ -1,5 +1,5 @@
 import { ClassName } from "../models/Class";
-import { sumXDY } from "./CalculateScores";
+import { sumXDY } from "./MathUtil";
 
 const StartingMoney = (className: ClassName) => {
     let [x,y] = moneyCalculation[className];

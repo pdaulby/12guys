@@ -13,6 +13,7 @@ export const InnissHeightAndWeight = (race: Race, {Strength} :{Strength: number}
     height = Math.floor(height);
 
     let weight = weightFrom31to110Height[height-31];
+    weight = applyPercent(weight, weightModifier[race]);
     let weightVariationTable = race === 'Human' ? humanWeightVariation : demiHumanWeightVariation;
     let r2  = Math.random() * 1000;
     let [,wv1,wv2] = weightVariationTable.find(([i,,])=>i>r2)!;

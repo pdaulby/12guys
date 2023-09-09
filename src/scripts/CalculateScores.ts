@@ -1,6 +1,8 @@
-import AbilityScores, { AbilityName, AbilityNames } from "../models/AbilityScores";
+import AbilityScores, { AbilityNames } from "../models/AbilityScores";
+import { ClassName } from "../models/Class";
 import { Race, RaceClassRestrictions, RacialScoreAdjustment, RacialScoreMax, RacialScoreMin } from "../models/Race";
-import { allowedClasses } from "./MinimumScores";
+import { sumXDY, sum, max, min } from "./MathUtil";
+import { MinumumScores, allowedClasses } from "./MinimumScores";
 
 export const createViableScore = (race: Race): AbilityScores => {
   let scores = createAdjustedScore(race);
@@ -27,6 +29,31 @@ export const createAdjustedScore = (race: Race) => {
     return scores;
 }
 
+export const doScoreAdjustments = (score: AbilityScores, adjustments: AbilityScores[], race: Race, className: ClassName) => {
+  let raceMin = RacialScoreMin.get(race)!
+  let raceMax = RacialScoreMax.get(race)!
+  let classMin = MinumumScores.get(className)!
+
+  return adjustments.reduce((a, s) => {
+      let n = sumScores(s, a);
+      n = maxOfScores(n, raceMin);
+      n = minOfScores(n, raceMax);
+      n = maxOfScores(n, classMin);
+      return n;
+  }, score);
+}
+
+const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:number, a:number)=>number): AbilityScores => {
+  let newScore = {...score};
+  AbilityNames.forEach(attribute => {
+    newScore[attribute] = modifier(score[attribute], adjust[attribute]);
+  });
+  return newScore;
+}
+const sumScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, sum);
+const maxOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, max);
+const minOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, min);
+
 export function createScores(): AbilityScores {
     return {
       Strength: sum3D6(),
@@ -39,13 +66,3 @@ export function createScores(): AbilityScores {
   }
 
   const sum3D6 = () => sumXDY(3, 6);
-  export function sumXDY(x: number, y: number): number {
-    return rollXDY(x, y).reduce(sum, 0);
-  }
-  function rollD4Minus1(): number {
-    return rollXDY(4, 6).sort((a, b)=>b-a).slice(0, 3).reduce(sum, 0);
-  }
-  const rollXDY = (x: number, y: number) => Array.from(Array(x)).map(_=>rollDY(y));
-  const rollDY = (y: number) => Math.floor(Math.random() * y) + 1;
-
-  const sum = (a: number,b: number)=>a+b;

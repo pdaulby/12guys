@@ -18,7 +18,7 @@ const App: React.FC = observer(() => {
   );
 });
 
-const Body: React.FC<{stage: 0 | 1 | 2}> = ({stage}) => {
+const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
   switch (stage) {
     case 0:
      return (<ChooseRace/>);
@@ -27,6 +27,8 @@ const Body: React.FC<{stage: 0 | 1 | 2}> = ({stage}) => {
       return (<TwelveGuys scores={scores}></TwelveGuys>);
     case 2: 
       return <RollDetails />
+    case 3: 
+      return <></>
   }
 }
 

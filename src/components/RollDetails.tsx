@@ -1,7 +1,7 @@
 import React from 'react';
 import Store from '../store/Store';
 import { StatBlock } from './StatBlock';
-import { getAge } from '../scripts/Age';
+import { getAge, getAgeCategory } from '../scripts/Age';
 import StartingMoney from '../scripts/StartingMoney';
 import { InnissHeightAndWeight } from '../scripts/HeightWeight';
 import { heightFromInches } from '../scripts/MathUtil';
@@ -16,7 +16,7 @@ export const RollDetails: React.FC = () => {
 
     return (<>
         <StatBlock {...Store.abilityScores!} />
-        <div>age: {age}</div>
+        <div>age: {age} {getAgeCategory(age, Store.race!)}</div>
         <div>starting money: {money}</div>
         <div>height: {feet} foot {inches}</div>
         <div>weight: {weight} lbs</div>
