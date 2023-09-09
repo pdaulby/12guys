@@ -5,6 +5,7 @@ import { getAge, getAgeCategory } from '../scripts/Age';
 import { heightFromInches } from '../scripts/MathUtil';
 
 export const RollDetails: React.FC = () => { 
+    if (!Store.height) Store.calculateMiscValues();
     let age = getAge(Store.race!, Store.className!);
     let {feet, inches} = heightFromInches(Store.height);
 

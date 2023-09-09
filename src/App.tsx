@@ -27,7 +27,6 @@ const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
       let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
       return (<TwelveGuys scores={scores}></TwelveGuys>);
     case 2: 
-      Store.calculateMiscValues();
       return <RollDetails />
     case 3: 
       return <ShowDetails />

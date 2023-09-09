@@ -28,6 +28,8 @@ class CharacterStore {
             chooseClass: action,
             age: observable,
             increaseAge: action,
+            money: observable,
+            updateMoney: action,
             calculateMiscValues: action,
             stage: computed
         });
@@ -40,12 +42,13 @@ class CharacterStore {
         this.abilityScores = doScoreAdjustments(this.abilityScores!, adjustments, this.race!, this.className!);
         this.age += increase;
     }
+    updateMoney = (increase: number) => this.money += increase;
     calculateMiscValues = () => {
-        this.money = StartingMoney(this.className!);
         let {height, weight} = InnissHeightAndWeight(this.race!, this.abilityScores!);
         this.height = height;
         this.weight = weight;
         this.professions = rollProfessions();
+        this.updateMoney(StartingMoney(this.className!));
     }
 
     get stage() { return !this.race? 0 
