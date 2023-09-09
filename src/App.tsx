@@ -6,10 +6,8 @@ import Store from './store/Store';
 import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
-import { StatBlock } from './components/StatBlock';
 import { RollDetails } from './components/RollDetails';
 
-//heights and weights https://annarchive.com/files/Drmg091.pdf
 const App: React.FC = observer(() => {
   //Store.staged is referenced here to make the observables active
   return (
