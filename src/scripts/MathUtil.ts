@@ -22,4 +22,4 @@ const rollDY = (y: number) => Math.floor(Math.random() * y) + 1;
   
 export const sum = (a: number,b: number)=>a+b;
 export const min = (s: number, a: number) : number => a-s>0?s:a;
-export const max = (s: number, a: number) : number => a-s<0?a:s;  
+export const max = (s: number, a: number) : number => a-s<0?s:a;  

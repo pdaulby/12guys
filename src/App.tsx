@@ -7,6 +7,7 @@ import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
 import { RollDetails } from './components/RollDetails';
+import { ShowDetails } from './components/ShowDetails';
 
 const App: React.FC = observer(() => {
   //Store.staged is referenced here to make the observables active
@@ -26,9 +27,10 @@ const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
       let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
       return (<TwelveGuys scores={scores}></TwelveGuys>);
     case 2: 
+      Store.calculateMiscValues();
       return <RollDetails />
     case 3: 
-      return <></>
+      return <ShowDetails />
   }
 }
 

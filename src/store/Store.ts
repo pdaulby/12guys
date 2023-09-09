@@ -4,13 +4,20 @@ import AbilityScores from '../models/AbilityScores';
 import { ClassName } from '../models/Class';
 import { getAgeAdjustments } from '../scripts/Age';
 import { doScoreAdjustments } from '../scripts/CalculateScores';
+import { InnissHeightAndWeight } from '../scripts/HeightWeight';
+import { rollProfessions } from '../scripts/SecondarySkills';
+import StartingMoney from '../scripts/StartingMoney';
 
 
 class CharacterStore {
-     race: Race | undefined;
-     className: ClassName | undefined;
-     abilityScores: AbilityScores | undefined;
-     age: number = 0;
+    race: Race | undefined;
+    className: ClassName | undefined;
+    abilityScores: AbilityScores | undefined;
+    age: number = 0;
+    money: number = 0;
+    height: number = 0;
+    weight: number = 0;
+    professions: string[] = []; 
 
     constructor() {
         makeObservable(this, {
@@ -21,6 +28,7 @@ class CharacterStore {
             chooseClass: action,
             age: observable,
             increaseAge: action,
+            calculateMiscValues: action,
             stage: computed
         });
     }
@@ -31,7 +39,15 @@ class CharacterStore {
         let adjustments = getAgeAdjustments(this.age, increase, this.race!);
         this.abilityScores = doScoreAdjustments(this.abilityScores!, adjustments, this.race!, this.className!);
         this.age += increase;
-     }
+    }
+    calculateMiscValues = () => {
+        this.money = StartingMoney(this.className!);
+        let {height, weight} = InnissHeightAndWeight(this.race!, this.abilityScores!);
+        this.height = height;
+        this.weight = weight;
+        this.professions = rollProfessions();
+    }
+
     get stage() { return !this.race? 0 
         : !this.className? 1 
         : !this.age? 2
