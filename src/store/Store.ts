@@ -7,6 +7,7 @@ import { doScoreAdjustments } from '../scripts/CalculateScores';
 import { InnissHeightAndWeight } from '../scripts/HeightWeight';
 import { rollProfessions } from '../scripts/SecondarySkills';
 import StartingMoney from '../scripts/StartingMoney';
+import { StartingHealth } from '../scripts/HitDice';
 
 
 class CharacterStore {
@@ -17,6 +18,7 @@ class CharacterStore {
     money: number = 0;
     height: number = 0;
     weight: number = 0;
+    maxHealth: number = 0;
     professions: string[] = []; 
 
     constructor() {
@@ -49,6 +51,7 @@ class CharacterStore {
         this.weight = weight;
         this.professions = rollProfessions();
         this.updateMoney(StartingMoney(this.className!));
+        this.maxHealth = StartingHealth(this.className!);
     }
 
     get stage() { return !this.race? 0 

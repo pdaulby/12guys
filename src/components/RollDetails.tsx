@@ -13,6 +13,7 @@ export const RollDetails: React.FC = () => {
         <StatBlock {...Store.abilityScores!} />
         <div>Age: {age}, {feet}"{inches}', {Store.weight} lb. {Store.professions.join(', ')}</div>
         <div>Starting gold: {Store.money}</div>
+        <div>Starting health: {Store.maxHealth}</div>
         <div>Age category: {getAgeCategory(age, Store.race!)} <button onClick={()=>Store.increaseAge(age)}>apply age ability score modifications</button></div>
   </>)
 }

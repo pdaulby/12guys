@@ -15,7 +15,7 @@ const Cleric: AbilityScores = {
     Dexterity: 3,
     Constitution: 6,
     Intelligence: 6,
-    Wisdom: 9, //15 10
+    Wisdom: 9, //15
     Charisma: 6
 }
 

@@ -10,5 +10,6 @@ export const ShowDetails: React.FC = () => {
         <StatBlock {...Store.abilityScores!} />
         <div>Age: {Store.age}, {feet}"{inches}', {Store.weight} lb. {Store.professions.join(', ')}</div>
         <div>Gold: {Store.money}</div>
+        <div>Max health: {Store.maxHealth}</div>
   </>)
 }

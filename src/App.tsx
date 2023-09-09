@@ -36,4 +36,4 @@ const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
 
 export default App;
 
-const Header: React.FC = () => <header className="App-header">{Store.stage} {Store.race} {Store.className} </header>
+const Header: React.FC = () => <header className="App-header">{Store.race} {Store.className} </header>
