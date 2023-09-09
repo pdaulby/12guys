@@ -5,12 +5,14 @@ import { getAge } from '../scripts/Age';
 import StartingMoney from '../scripts/StartingMoney';
 import { InnissHeightAndWeight } from '../scripts/HeightWeight';
 import { heightFromInches } from '../scripts/MathUtil';
+import { rollProfessions } from '../scripts/SecondarySkills';
 
 export const RollDetails: React.FC = () => { 
     let age = getAge(Store.race!, Store.className!);
     let money = StartingMoney(Store.className!);
     let {height, weight} = InnissHeightAndWeight(Store.race!, Store.abilityScores!);
     let {feet, inches} = heightFromInches(height);
+    let professions = rollProfessions();
 
     return (<>
         <StatBlock {...Store.abilityScores!} />
@@ -18,5 +20,6 @@ export const RollDetails: React.FC = () => {
         <div>starting money: {money}</div>
         <div>height: {feet} foot {inches}</div>
         <div>weight: {weight} lbs</div>
+        <div>professions: {professions.join(', ')}</div>
   </>)
 }
