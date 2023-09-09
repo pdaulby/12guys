@@ -4,3 +4,8 @@ export const randBetween = (a: number, b: number) => {
 }
 
 export const applyPercent = (val: number, percent: number) => val + (val * percent / 100);
+
+export const heightFromInches = (inches: number) => ({
+        feet: Math.floor(inches / 12),
+        inches: inches % 12
+    });
