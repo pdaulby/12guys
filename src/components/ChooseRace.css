@@ -1,11 +1,20 @@
 .p1 {
     margin-right: 10px;
 }
+.RaceSelect {
+    display: inline-grid;
+    grid-template-columns: auto;
+}
 .RaceOverview {
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 10px;
     display: inline-grid;
     grid-template-columns: auto auto;
+}
+@media screen and (min-width: 368px) {
+    .RaceOverview {
+        grid-template-columns: 121px auto;
+    }
 }
 .ScoreModifier {
     font-size: small;
@@ -14,7 +23,7 @@
     font-size: medium;
 }
 .RaceAbilities { 
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 .RaceClasses {
     max-width: 360px;

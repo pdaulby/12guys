@@ -4,7 +4,7 @@ import store from "../store/Store";
 import { Race, RaceAbilitiesSmall, RaceClassRestrictions, Races, RacialScoreAdjustment } from "../models/Race";
 import { AbilityNames } from "../models/AbilityScores";
 
-const ChooseRace: React.FC = () => (<>{Races.map(race => <RaceOverview key={race} race={race} />)} </>);
+const ChooseRace: React.FC = () => (<div className="RaceSelect">{Races.map(race => <RaceOverview key={race} race={race} />)}</div>);
 
 const RaceOverview: React.FC<{race: Race}> = ({race}) => {
     return (
