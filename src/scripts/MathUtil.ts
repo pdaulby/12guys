@@ -13,7 +13,7 @@ export const heightFromInches = (inches: number) => ({
 
 export const sumXDY = (x: number, y: number): number => rollXDY(x, y).reduce(sum, 0);
 
-const rollD4Minus1 = (): number => rollXDY(4, 6).sort((a, b)=>b-a).slice(0, 3).reduce(sum, 0);
+const sum4d6DropLowest = (): number => rollXDY(4, 6).sort((a, b)=>b-a).slice(0, 3).reduce(sum, 0);
 const rollXDY = (x: number, y: number) => Array.from(Array(x)).map(_=>rollDY(y));
 const rollDY = (y: number) => Math.floor(Math.random() * y) + 1;
   

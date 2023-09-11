@@ -6,8 +6,9 @@ import Store from './store/Store';
 import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
-import { RollDetails } from './components/RollDetails';
+import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
+import { StatBlock } from './components/StatBlock';
 
 const App: React.FC = observer(() => {
   //Store.staged is referenced here to make the observables active
@@ -19,7 +20,7 @@ const App: React.FC = observer(() => {
   );
 });
 
-const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
+const Body: React.FC<{stage: 0 | 1 | 2 | 3 | 4}> = ({stage}) => {
   switch (stage) {
     case 0:
      return (<ChooseRace/>);
@@ -29,6 +30,8 @@ const Body: React.FC<{stage: 0 | 1 | 2 | 3}> = ({stage}) => {
     case 2: 
       return <RollDetails />
     case 3: 
+      return <ChooseAllignment />
+    case 4: 
       return <ShowDetails />
   }
 }
