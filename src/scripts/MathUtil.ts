@@ -11,15 +11,12 @@ export const heightFromInches = (inches: number) => ({
     });
 
 
-export function sumXDY(x: number, y: number): number {
-  return rollXDY(x, y).reduce(sum, 0);
-}
-function rollD4Minus1(): number {
-  return rollXDY(4, 6).sort((a, b)=>b-a).slice(0, 3).reduce(sum, 0);
-}
+export const sumXDY = (x: number, y: number): number => rollXDY(x, y).reduce(sum, 0);
+
+const rollD4Minus1 = (): number => rollXDY(4, 6).sort((a, b)=>b-a).slice(0, 3).reduce(sum, 0);
 const rollXDY = (x: number, y: number) => Array.from(Array(x)).map(_=>rollDY(y));
 const rollDY = (y: number) => Math.floor(Math.random() * y) + 1;
   
-export const sum = (a: number,b: number)=>a+b;
+export const sum = (a: number,b: number) => a+b;
 export const min = (s: number, a: number) : number => a-s>0?s:a;
 export const max = (s: number, a: number) : number => a-s<0?s:a;  

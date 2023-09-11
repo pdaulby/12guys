@@ -6,7 +6,7 @@ import { MinumumScores, allowedClasses } from "./MinimumScores";
 
 export const createViableScore = (race: Race): AbilityScores => {
   let scores = createAdjustedScore(race);
-  if (allowedClasses(scores, RaceClassRestrictions.get(race)).length == 0)
+  if (allowedClasses(scores, RaceClassRestrictions.get(race)).length === 0)
     return createViableScore(race);
   return scores;
 }

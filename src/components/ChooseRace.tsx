@@ -24,7 +24,7 @@ const RaceOverview: React.FC<{race: Race}> = ({race}) => {
 
 const RaceScoreModifier: React.FC<{race: Race}> = ({race}) => {
     let adjustment = RacialScoreAdjustment.get(race)!;
-    let adjustedAbility = AbilityNames.filter(ability=>adjustment[ability] != 0);
+    let adjustedAbility = AbilityNames.filter(ability=>adjustment[ability] !== 0);
     return (
         <div className="ScoreModifier">
             {adjustedAbility.map(ability=><div key={race+ability}>{ability}: {adjustment[ability]>=0?'+':''}{adjustment[ability]}</div>)}
