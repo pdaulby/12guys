@@ -8,7 +8,6 @@ import ChooseRace from './components/ChooseRace';
 import { createViableScore } from './scripts/CalculateScores';
 import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
-import { StatBlock } from './components/StatBlock';
 
 const App: React.FC = observer(() => {
   //Store.staged is referenced here to make the observables active

@@ -8,12 +8,14 @@ import { InnissHeightAndWeight } from '../scripts/HeightWeight';
 import { rollProfessions } from '../scripts/SecondarySkills';
 import StartingMoney from '../scripts/StartingMoney';
 import { StartingHealth } from '../scripts/HitDice';
+import Allignment from '../models/Allignment';
 
 
 class CharacterStore {
     race: Race | undefined;
     className: ClassName | undefined;
     abilityScores: AbilityScores | undefined;
+    allignment: Allignment | undefined;
     age: number = 0;
     money: number = 0;
     height: number = 0;
@@ -33,6 +35,8 @@ class CharacterStore {
             money: observable,
             updateMoney: action,
             calculateMiscValues: action,
+            allignment: observable,
+            chooseAllignment: action,
             stage: computed
         });
     }
@@ -53,11 +57,14 @@ class CharacterStore {
         this.updateMoney(StartingMoney(this.className!));
         this.maxHealth = StartingHealth(this.className!);
     }
+    chooseAllignment = (allignment: Allignment) => this.allignment = allignment;
 
     get stage() { return !this.race? 0 
         : !this.className? 1 
         : !this.age? 2
-        : 3}
+        : !this.allignment? 3
+        : 4; 
+    }
 }
 
 const store = new CharacterStore();
