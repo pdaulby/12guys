@@ -18,6 +18,7 @@ export const ChooseAllignment: React.FC = () => {
   return (<>
     <ShowDetails />
     <div className='Allignments'>
+      <div>Choose Allignment:</div>
       {AllignmentGrid.map(row=>
       <div className='AllignmentRow'>
         {row.map(allignment=><AllignmentButton allignment={allignment} allowed={allignments.includes(allignment)} />)}
