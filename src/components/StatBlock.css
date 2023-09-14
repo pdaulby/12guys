@@ -23,7 +23,21 @@
 
 .ClassSelect:hover {
   border-top: 1px;
-  text-decoration:wavy;
+  cursor: pointer;
+}
+
+.DisabledSelect {
+  color: grey;
+  background-color: #5e687d;
+  margin: 4px;
+  padding: 4px;
+  display: inline-block;
+  font-size: medium;
+  text-decoration: line-through;
+}
+.DisabledSelect:hover {
+  border-top: 1px;
+  cursor:default;
 }
 
 .Rare {

@@ -1,7 +1,9 @@
 export type Allignment = 'LG' | 'LN' | 'LE' 
                 | 'NG' | 'NN' | 'NE'
                 | 'CG' | 'CN' | 'CE';
-const Allignments: Allignment[] = ['LG', 'LN', 'LE', 'NG', 'NN', 'NE', 'CG', 'CN', 'CE']
+export const Allignments: Allignment[] = ['LG', 'LN', 'LE', 'NG', 'NN', 'NE', 'CG', 'CN', 'CE']
+
+export const AllignmentGrid: Allignment[][] = [['LG', 'LN', 'LE'], ['NG', 'NN', 'NE'], ['CG', 'CN', 'CE']]
 
 export const classAllignment = {
     'Cleric': Allignments,

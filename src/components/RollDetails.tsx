@@ -2,7 +2,7 @@ import React from 'react';
 import Store from '../store/Store';
 import { getAge, getAgeCategory } from '../scripts/Age';
 import { ShowDetails } from './ShowDetails';
-import Allignment, { AllignmentText, classAllignment } from '../models/Allignment';
+import Allignment, { AllignmentGrid, AllignmentText, classAllignment } from '../models/Allignment';
 
 export const RollDetails: React.FC = () => { 
   if (!Store.height) Store.calculateMiscValues();
@@ -18,7 +18,17 @@ export const ChooseAllignment: React.FC = () => {
   return (<>
     <ShowDetails />
     <div className='Allignments'>
-      {allignments.map(a=><button key={a} onClick={()=>Store.chooseAllignment(a)}>{AllignmentText[a]}</button>)}
+      {AllignmentGrid.map(row=>
+      <div className='AllignmentRow'>
+        {row.map(allignment=><AllignmentButton allignment={allignment} allowed={allignments.includes(allignment)} />)}
+      </div>)}
     </div>
   </>)
+}
+export const AllignmentButton: React.FC<{allignment: Allignment, allowed: boolean}> = ({allignment, allowed}) => {
+  return (
+    <div className={allowed?'ClassSelect':'DisabledSelect'} onClick={()=>allowed ? Store.chooseAllignment(allignment) : {}} >
+        {AllignmentText[allignment]}
+    </div>
+    )
 }
