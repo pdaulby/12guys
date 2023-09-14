@@ -10,7 +10,7 @@ export const RollDetails: React.FC = () => {
   let age = getAge(Store.race!, Store.className!);
   return (<>
     <ShowDetails/>
-    <div>Age: {age} - {getAgeCategory(age, Store.race!)} <button onClick={()=>Store.increaseAge(age)}>apply age ability score modifications</button></div>
+    <div>Age: {age} - {getAgeCategory(age, Store.race!)} <Button onClick={()=>Store.increaseAge(age)}>apply age ability score modifications</Button></div>
   </>)
 }
 

@@ -11,6 +11,7 @@
   }
   
   .ClassSelect:hover {
+    text-decoration: none;
     border-top: 1px;
     cursor: pointer;
   }

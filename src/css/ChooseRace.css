@@ -1,6 +1,4 @@
-.p1 {
-    margin-right: 10px;
-}
+
 .RaceSelect {
     display: inline-grid;
     grid-template-columns: auto;
@@ -13,7 +11,10 @@
 }
 @media screen and (min-width: 368px) {
     .RaceOverview {
-        grid-template-columns: 121px auto;
+        grid-template-columns: 124px auto;
+    }
+    .p1 {
+        margin-right: -8px;
     }
 }
 .ScoreModifier {

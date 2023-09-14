@@ -1,5 +1,5 @@
 import React from "react";
-import './StatBlock.css';
+import '../css/StatBlock.css';
 import AbilityScores from "../models/AbilityScores";
 import { allowedClasses } from "../scripts/MinimumScores";
 import { RaceClassRestrictions } from "../models/Race";
