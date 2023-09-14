@@ -5,6 +5,7 @@ import { allowedClasses } from "../scripts/MinimumScores";
 import { RaceClassRestrictions } from "../models/Race";
 import store from "../store/Store";
 import { ClassName } from "../models/Class";
+import Button from "./Button";
 
 export const ChoosableStatBlock: React.FC<AbilityScores> =
  (scores) => {
@@ -26,5 +27,5 @@ const StatBox: React.FC<{name: string, stat: number}> = ({name, stat}) =>
 const ClassSelect: React.FC<{className: ClassName, abilityScores: AbilityScores}> = ({className, abilityScores}) => {
     let rare = ['Paladin', 'Illusionist', 'Druid', 'Ranger', 'Bard', 'Monk'].includes(className); 
     let starterClass: ClassName = className === 'Bard' ? 'Fighter' : className;
-    return (<button className={'ClassSelect '+(rare?'Rare':'')} onClick={()=>store.chooseClass(starterClass, abilityScores)}>{className}</button>)
+    return (<Button className={(rare?'Rare':'')} onClick={()=>store.chooseClass(starterClass, abilityScores)}>{className}</Button>)
 }

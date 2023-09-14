@@ -1,5 +1,5 @@
 import React from "react";
-import './ChooseRace.css';
+import '../css/ChooseRace.css';
 import store from "../store/Store";
 import { Race, RaceAbilitiesSmall, RaceClassRestrictions, Races, RacialScoreAdjustment } from "../models/Race";
 import { AbilityNames } from "../models/AbilityScores";
