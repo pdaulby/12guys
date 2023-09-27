@@ -9,18 +9,14 @@ import { createViableScore } from './scripts/CalculateScores';
 import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
 
-const App: React.FC = observer(() => {
-  //Store.staged is referenced here to make the observables active
-  return (
-    <div className="App">
-      <Header />
-      <Body stage={Store.stage} /> 
-    </div>
-  );
-});
+const App: React.FC = () => 
+  <div className="App">
+    <Header />
+    <Body /> 
+  </div>;
 
-const Body: React.FC<{stage: 0 | 1 | 2 | 3 | 4}> = ({stage}) => {
-  switch (stage) {
+const Body: React.FC = observer(() => {
+  switch (Store.stage) {
     case 0:
      return (<ChooseRace/>);
     case 1:
@@ -33,9 +29,9 @@ const Body: React.FC<{stage: 0 | 1 | 2 | 3 | 4}> = ({stage}) => {
     case 4: 
       return <ShowDetails />
   }
-}
+})
 
 
 export default App;
 
-const Header: React.FC = () => <header className="App-header">{Store.race} {Store.className} </header>
+const Header: React.FC = observer(() => <header className="App-header">{Store.race} {Store.className} </header>)
