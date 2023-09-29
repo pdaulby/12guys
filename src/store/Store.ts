@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable } from 'mobx';
+import { action, computed, configure, makeAutoObservable, observable } from 'mobx';
 import { Race } from '../models/Race';
 import AbilityScores from '../models/AbilityScores';
 import { ClassName } from '../models/Class';
@@ -10,12 +10,12 @@ import StartingMoney from '../scripts/StartingMoney';
 import { StartingHealth } from '../scripts/HitDice';
 import Allignment from '../models/Allignment';
 
-
+configure({enforceActions: "always"})
 class CharacterStore {
-    race: Race | undefined;
-    className: ClassName | undefined;
-    abilityScores: AbilityScores | undefined;
-    allignment: Allignment | undefined;
+    race?: Race;
+    className?: ClassName;
+    abilityScores?: AbilityScores;
+    allignment?: Allignment;
     age: number = 0;
     money: number = 0;
     height: number = 0;
@@ -24,21 +24,7 @@ class CharacterStore {
     professions: string[] = []; 
 
     constructor() {
-        makeObservable(this, {
-            race: observable,
-            chooseRace: action,
-            className: observable,
-            abilityScores: observable,
-            chooseClass: action,
-            age: observable,
-            increaseAge: action,
-            money: observable,
-            updateMoney: action,
-            calculateMiscValues: action,
-            allignment: observable,
-            chooseAllignment: action,
-            stage: computed
-        });
+        makeAutoObservable(this);
     }
     chooseRace = (race: Race) => this.race = race;
     chooseClass = (className: ClassName, abilityScores: AbilityScores) => 
