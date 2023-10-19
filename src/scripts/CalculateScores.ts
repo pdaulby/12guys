@@ -48,4 +48,4 @@ export function createScores(roll: ()=>number): AbilityScores {
     };
   }
 
-  const sum3D6 = () => sumXDY(3, 6);
+const sum3D6 = () => sumXDY(3, 6);

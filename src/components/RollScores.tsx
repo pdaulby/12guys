@@ -5,7 +5,7 @@ import compareScores from '../scripts/SortScores';
 import Store from "../store/Store";
 import { observer } from "mobx-react";
 import { createViableScore } from "../scripts/CalculateScores";
-import { xD6Top3 } from "../scripts/MathUtil";
+import { sumXDY, xD6Top3 } from "../scripts/MathUtil";
 
 export const RollScores: React.FC = observer(() => {
     switch (Store.method) {
@@ -17,7 +17,7 @@ export const RollScores: React.FC = observer(() => {
       case 2:
         throw Error("should never happen")
       case 3:
-        let score3 = createViableScore(Store.race!, ()=>xD6Top3(6))
+        let score3 = createViableScore(Store.race!, ()=> Math.max(...Array.from(Array(12)).map(()=>sumXDY(3,6))))
         return <ChoosableStatBlock {...score3} />
       case 4:
         let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
