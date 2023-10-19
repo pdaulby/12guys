@@ -4,44 +4,30 @@ import { Race, RaceClassRestrictions, RacialScoreAdjustment, RacialScoreMax, Rac
 import { sumXDY, sum, max, min } from "./MathUtil";
 import { MinumumScores, allowedClasses } from "./MinimumScores";
 
-export const createViableScore = (race: Race): AbilityScores => {
-  let scores = createAdjustedScore(race);
+export const createViableScore = (race: Race, roll: ()=>number = sum3D6): AbilityScores => {
+  let scores = createScores(roll);
+  scores = createAdjustedScore(race, scores);
   if (allowedClasses(scores, RaceClassRestrictions.get(race)).length === 0)
     return createViableScore(race);
   return scores;
 }
 
-export const createAdjustedScore = (race: Race) => {
-    let scores = createScores();
+export const createAdjustedScore = (race: Race, scores: AbilityScores) => {
     let adjustment = RacialScoreAdjustment.get(race)!;
-    let max = RacialScoreMax.get(race)!;
-    let min = RacialScoreMin.get(race)!;
-    AbilityNames.forEach(attribute => {
-        let adjusted = scores[attribute] + adjustment[attribute];
-        if (adjusted > max[attribute]) 
-            scores[attribute] = max[attribute];
-        else if (adjusted < min[attribute]) 
-            scores[attribute] = min[attribute];
-        else 
-            scores[attribute] = adjusted;
-    }); 
-
-    return scores;
+    return doAdjust(scores, adjustment, race)
 }
 
-export const doScoreAdjustments = (score: AbilityScores, adjustments: AbilityScores[], race: Race, className: ClassName) => {
-  let raceMin = RacialScoreMin.get(race)!
-  let raceMax = RacialScoreMax.get(race)!
-  let classMin = MinumumScores.get(className)!
-
-  return adjustments.reduce((a, s) => {
-      let n = sumScores(s, a);
-      n = maxOfScores(n, raceMin);
-      n = minOfScores(n, raceMax);
-      n = maxOfScores(n, classMin);
-      return n;
-  }, score);
+export const doAdjust = (score: AbilityScores, adjustment: AbilityScores, race: Race, className?: ClassName) => {
+  let s = sumScores(score, adjustment);
+  s = maxOfScores(s, RacialScoreMin.get(race)!);
+  s = minOfScores(s, RacialScoreMax.get(race)!);
+  if (className) s = maxOfScores(s, MinumumScores.get(className)!);
+  return s;
 }
+
+const sumScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, sum);
+const maxOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, max);
+const minOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, min);
 
 const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:number, a:number)=>number): AbilityScores => {
   let newScore = {...score};
@@ -50,18 +36,15 @@ const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:n
   });
   return newScore;
 }
-const sumScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, sum);
-const maxOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, max);
-const minOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, min);
 
-export function createScores(): AbilityScores {
+export function createScores(roll: ()=>number): AbilityScores {
     return {
-      Strength: sum3D6(),
-      Dexterity: sum3D6(),
-      Constitution: sum3D6(),
-      Intelligence: sum3D6(),
-      Wisdom: sum3D6(),
-      Charisma: sum3D6()
+      Strength: roll(),
+      Dexterity: roll(),
+      Constitution: roll(),
+      Intelligence: roll(),
+      Wisdom: roll(),
+      Charisma: roll()
     };
   }
 

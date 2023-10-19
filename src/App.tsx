@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import AbilityScores from './models/AbilityScores';
-import TwelveGuys from './components/TwelveGuys';
+import RollScores from './components/RollScores';
 import Store from './store/Store';
 import { observer } from 'mobx-react';
 import ChooseRace from './components/ChooseRace';
-import { createViableScore } from './scripts/CalculateScores';
 import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
+import ChooseMethod from './components/ChooseMethod';
 
 const App: React.FC = () => 
   <div className="App">
@@ -17,21 +16,22 @@ const App: React.FC = () =>
 
 const Body: React.FC = observer(() => {
   switch (Store.stage) {
+    case -1: 
+      return <ChooseMethod/>
     case 0:
-     return (<ChooseRace/>);
+     return <ChooseRace/>;
     case 1:
-      let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
-      return (<TwelveGuys scores={scores}></TwelveGuys>);
+      return <RollScores/>
     case 2: 
-      return <RollDetails />
+      return <RollDetails/>
     case 3: 
-      return <ChooseAllignment />
+      return <ChooseAllignment/>
     case 4: 
-      return <ShowDetails />
+      return <ShowDetails/>
   }
 })
-
 
 export default App;
 
 const Header: React.FC = observer(() => <header className="App-header">{Store.race} {Store.className} </header>)
+
