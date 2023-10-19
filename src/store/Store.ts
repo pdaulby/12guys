@@ -16,7 +16,7 @@ class CharacterStore {
     className?: ClassName;
     abilityScores?: AbilityScores;
     allignment?: Allignment;
-    method: 0|1|2|3|4|5 = 0;
+    method: -1|0|1|2|3|4|5 = -1;
     age: number = 0;
     money: number = 0;
     height: number = 0;
@@ -27,7 +27,7 @@ class CharacterStore {
     constructor() {
         makeAutoObservable(this);
     }
-    chooseMethod = (method: 1|2|3|4|5 ) => this.method = method;
+    chooseMethod = (method: 0|1|2|3|4|5 ) => this.method = method;
     
     chooseRace = (race: Race) => this.race = race;
     chooseClass = (className: ClassName, abilityScores: AbilityScores) => 
@@ -51,7 +51,7 @@ class CharacterStore {
     }
     chooseAllignment = (allignment: Allignment) => this.allignment = allignment;
 
-    get stage() { return !this.method? -1
+    get stage() { return this.method === -1 ? -1
         : !this.race? 0 
         : !this.className? 1 
         : !this.age? 2

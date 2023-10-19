@@ -9,13 +9,16 @@ import { xD6Top3 } from "../scripts/MathUtil";
 
 export const RollScores: React.FC = observer(() => {
     switch (Store.method) {
+      case -1:
       case 0:
+        let score0 = createViableScore(Store.race!)
+        return <ChoosableStatBlock {...score0} />
       case 1:
       case 2:
         throw Error("should never happen")
       case 3:
-        let score = createViableScore(Store.race!, ()=>xD6Top3(6))
-        return <ChoosableStatBlock {...score} />
+        let score3 = createViableScore(Store.race!, ()=>xD6Top3(6))
+        return <ChoosableStatBlock {...score3} />
       case 4:
         let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
         scores.sort(compareScores);
