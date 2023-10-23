@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/ChooseRace.css';
 import store from "../store/Store";
 import Button from "./Button";
 
@@ -13,9 +14,13 @@ const ChooseMethod: React.FC = () =>
     </div>
 
 const Method: React.FC<{method: 0|1|2|3|4|5, children?: React.ReactNode}> = ({method, children}) =>
-    <div>
-        {children}
-        <Button disabled={[5].includes(method)} onClick={()=>store.chooseMethod(method)}>{"Method "+method}</Button>
+    <div className="RaceOverview">
+        <div className="p1">
+            <Button disabled={[5].includes(method)} onClick={()=>store.chooseMethod(method)}>{"Method "+method}</Button>
+        </div>
+        <div className="Description">
+            {children}
+        </div>
     </div>
 
 export default ChooseMethod;

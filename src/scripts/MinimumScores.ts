@@ -1,5 +1,6 @@
-import AbilityScores from "../models/AbilityScores";
+import AbilityScores, { SixNumbers } from "../models/AbilityScores";
 import { ClassName } from "../models/Class";
+import { toSortedNumbers } from "./SortScores";
 
 const Fighter: AbilityScores = {
     Strength: 9, //15 10
@@ -130,7 +131,7 @@ function allowedClass(actualScores: AbilityScores, requiredScores: AbilityScores
     && actualScores.Charisma >= requiredScores.Charisma;
 }
 
-export function possibleClasses(scores: number[], allowedClasses: ClassName[] = []): ClassName[] {
+export function possibleClasses(scores: SixNumbers, allowedClasses: ClassName[] = []): ClassName[] {
     return Array.from(MinumumScores.entries())
         .filter(e=>allowedClasses.includes(e[0]))
         .map(e=>toList(e))
@@ -138,13 +139,12 @@ export function possibleClasses(scores: number[], allowedClasses: ClassName[] = 
         .map(e=>e[0])
 }
 
-function toList([c, a]: [ClassName, AbilityScores]): [ClassName, number[]] {
-    let n = [a.Charisma, a.Constitution, a.Dexterity, a.Intelligence, a.Strength, a.Wisdom];
-    n.sort((a,b)=>b-a);
-    return [c,n];
+function toList([c, a]: [ClassName, AbilityScores]): [ClassName, SixNumbers] {
+    return [c,toSortedNumbers(a)];
 }
 
-function possibleClass(actualScores: number[], requiredScores: number[]): boolean {
+
+function possibleClass(actualScores: SixNumbers, requiredScores: SixNumbers): boolean {
     return actualScores[0] >= requiredScores[0] 
     && actualScores[1] >= requiredScores[1] 
     && actualScores[2] >= requiredScores[2] 
