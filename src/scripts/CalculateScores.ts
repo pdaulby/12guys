@@ -37,7 +37,7 @@ const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:n
   return newScore;
 }
 
-export function createScores(roll: ()=>number): AbilityScores {
+export function createScores(roll: ()=>number = sum3D6): AbilityScores {
     return {
       Strength: roll(),
       Dexterity: roll(),

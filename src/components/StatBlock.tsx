@@ -9,11 +9,12 @@ import Button from "./Button";
 
 export const ChoosableStatBlock: React.FC<AbilityScores> =
  (scores) => {
+    let classes = allowedClasses(scores, RaceClassRestrictions.get(store.race!));
     return (<>
         <StatBlock {...scores} />
         <div className="ClassSelectContainer">
-            {allowedClasses(scores, RaceClassRestrictions.get(store.race!))
-                .map((c,i)=><ClassSelect key={i} className={c} abilityScores={scores} />)}
+            {classes.map((c,i)=><ClassSelect key={i} className={c} abilityScores={scores} />)}
+            {classes.length === 0 && "No viable classes"}
         </div>
     </>)
 }

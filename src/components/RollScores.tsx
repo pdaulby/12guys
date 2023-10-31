@@ -4,7 +4,7 @@ import { ChoosableStatBlock } from './StatBlock';
 import compareScores from '../scripts/SortScores';
 import Store from "../store/Store";
 import { observer } from "mobx-react";
-import { createViableScore } from "../scripts/CalculateScores";
+import { createAdjustedScore, createScores, createViableScore } from "../scripts/CalculateScores";
 import { sumXDY, xD6Top3 } from "../scripts/MathUtil";
 import ArrangeToTaste from "./ArrangeToTaste";
 import ArrangeStore from "../store/ArrangeStore"
@@ -39,7 +39,7 @@ export const RollScores: React.FC = observer(() => {
         let score3 = createViableScore(Store.race!, ()=> Math.max(...Array.from(Array(12)).map(()=>sumXDY(3,6))));
         return <ChoosableStatBlock {...score3} />
       case 4:
-        let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createViableScore(Store.race!));
+        let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createScores()).map((scores)=>createAdjustedScore(Store.race!, scores));
         scores.sort(compareScores);
         return (<TwelveGuys scores={scores}></TwelveGuys>);
       case 5:
