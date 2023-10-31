@@ -4,16 +4,16 @@ import { toSortedNumbers } from "./SortScores";
 
 const Fighter: AbilityScores = {
     Strength: 9, //15 10
-    Dexterity: 0,
+    Dexterity: 6,
     Constitution: 7,
     Intelligence: 0,
-    Wisdom: 0,
+    Wisdom: 6,
     Charisma: 6
 }
 
 const Cleric: AbilityScores = {
     Strength: 6,
-    Dexterity: 3,
+    Dexterity: 0,
     Constitution: 6,
     Intelligence: 6,
     Wisdom: 9, //15
@@ -21,7 +21,7 @@ const Cleric: AbilityScores = {
 }
 
 const MagicUser: AbilityScores = {
-    Strength: 3,
+    Strength: 0,
     Dexterity: 6,
     Constitution: 6,
     Intelligence: 9, //16
@@ -40,7 +40,7 @@ const Thief: AbilityScores = {
 
 const Paladin: AbilityScores = {
     Strength: 12,
-    Dexterity: 0,
+    Dexterity: 6,
     Constitution: 9,
     Intelligence: 9,
     Wisdom: 13,
@@ -49,7 +49,7 @@ const Paladin: AbilityScores = {
 
 const Ranger: AbilityScores = {
     Strength: 13,
-    Dexterity: 0,
+    Dexterity: 6,
     Constitution: 14,
     Intelligence: 13,
     Wisdom: 14,
@@ -66,11 +66,11 @@ const Druid: AbilityScores = {
 }
 
 const Illusionist: AbilityScores = {
-    Strength: 0,
+    Strength: 6,
     Dexterity: 16,
     Constitution: 6,
     Intelligence: 15,
-    Wisdom: 0,
+    Wisdom: 6,
     Charisma: 6
 }
 

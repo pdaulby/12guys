@@ -17,6 +17,8 @@ export const xD6Top3 = (x: number): number => rollXDY(x, 6).sort((a, b)=>b-a).sl
 const rollXDY = (x: number, y: number) => Array.from(Array(x)).map(_=>rollDY(y));
 const rollDY = (y: number) => Math.floor(Math.random() * y) + 1;
   
-export const sum = (a: number,b: number) => a+b;
+export const sum = (a: number, b: number) => a+b;
 export const min = (s: number, a: number) : number => a-s>0?s:a;
 export const max = (s: number, a: number) : number => a-s<0?s:a;  
+
+export const minMax = (min: number, max: number, num: number) => Math.min(Math.max(num, min), max)
