@@ -8,7 +8,7 @@ const Fighter: AbilityScores = {
     Constitution: 7,
     Intelligence: 0,
     Wisdom: 0,
-    Charisma: 0
+    Charisma: 6
 }
 
 const Cleric: AbilityScores = {
@@ -53,7 +53,7 @@ const Ranger: AbilityScores = {
     Constitution: 14,
     Intelligence: 13,
     Wisdom: 14,
-    Charisma: 0
+    Charisma: 6
 }
 
 const Druid: AbilityScores = {
@@ -71,7 +71,7 @@ const Illusionist: AbilityScores = {
     Constitution: 6,
     Intelligence: 15,
     Wisdom: 0,
-    Charisma: 0
+    Charisma: 6
 }
 
 const Assassin: AbilityScores = {
@@ -80,7 +80,7 @@ const Assassin: AbilityScores = {
     Constitution: 6,
     Intelligence: 12,
     Wisdom: 6,
-    Charisma: 3
+    Charisma: 0
 }
 
 const Bard: AbilityScores = {
