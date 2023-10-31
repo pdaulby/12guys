@@ -31,6 +31,7 @@ const Body: React.FC = observer(() => {
   }
 })
 
+
 export default App;
 
 const Header: React.FC = observer(() => <header className="App-header">{Store.race} {Store.className} </header>)

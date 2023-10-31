@@ -24,5 +24,5 @@ export default class AbilityScores {
 }
 
 export type AbilityName = 'Strength' | 'Dexterity' | 'Constitution' | 'Intelligence' | 'Wisdom' | 'Charisma';
-export const AbilityNames: AbilityName[] = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'];
+export const AbilityNames: [AbilityName,AbilityName,AbilityName,AbilityName,AbilityName,AbilityName] = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'];
 export type SixNumbers = [number,number,number,number,number,number]

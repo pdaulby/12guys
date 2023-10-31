@@ -1,6 +1,6 @@
 import { configure, makeAutoObservable } from 'mobx';
 import { Race } from '../models/Race';
-import AbilityScores from '../models/AbilityScores';
+import AbilityScores, { AbilityName, SixNumbers } from '../models/AbilityScores';
 import { ClassName } from '../models/Class';
 import { getAgeAdjustments } from '../scripts/Age';
 import { doAdjust } from '../scripts/CalculateScores';
