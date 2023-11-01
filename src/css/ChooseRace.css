@@ -1,7 +1,7 @@
 
-.RaceSelect {
-    display: inline-grid;
-    grid-template-columns: auto;
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 .RaceOverview {
     border: 1px solid rgba(0, 0, 0, 0.8);

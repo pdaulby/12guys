@@ -30,8 +30,11 @@ class CharacterStore {
     chooseMethod = (method: 0|1|2|3|4|5 ) => this.method = method;
     
     chooseRace = (race: Race) => this.race = race;
-    chooseClass = (className: ClassName, abilityScores: AbilityScores) => 
-        { this.className = className; this.abilityScores = abilityScores; };
+    chooseClass = (className: ClassName, race: Race, abilityScores: AbilityScores) => { 
+        this.className = className; 
+        this.race = race;
+        this.abilityScores = abilityScores; 
+    };
     increaseAge = (increase: number) => { 
         let adjustments = getAgeAdjustments(this.age, increase, this.race!);
         adjustments.forEach(adjustment => {
@@ -52,6 +55,7 @@ class CharacterStore {
     chooseAllignment = (allignment: Allignment) => this.allignment = allignment;
 
     get stage(): Stage { return this.method === -1 ? "choose method"
+        : !this.abilityScores? "roll scores"
         : !this.race? "choose race" 
         : !this.className? "choose class" 
         : !this.age? "roll details"
@@ -63,4 +67,4 @@ class CharacterStore {
 const store = new CharacterStore();
 export default store;
 
-export type Stage = "choose method"|"choose race"|"choose class"|"roll details"|"choose allignment"|"end"
+export type Stage = "choose method"|"roll scores"|"choose race"|"choose class"|"roll details"|"choose allignment"|"end"

@@ -122,7 +122,7 @@ export function allowedClasses(scores: AbilityScores, allowedClasses: ClassName[
         .map(e=>e[0])
 }
 
-function allowedClass(actualScores: AbilityScores, requiredScores: AbilityScores): boolean {
+export function allowedClass(actualScores: AbilityScores, requiredScores: AbilityScores): boolean {
     return actualScores.Strength >= requiredScores.Strength
     && actualScores.Dexterity >= requiredScores.Dexterity
     && actualScores.Constitution >= requiredScores.Constitution

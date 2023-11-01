@@ -29,7 +29,7 @@ const sumScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(s
 const maxOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, max);
 const minOfScores = (score: AbilityScores, adjust: AbilityScores) => adjustScore(score, adjust, min);
 
-const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:number, a:number)=>number): AbilityScores => {
+export const adjustScore = (score: AbilityScores, adjust: AbilityScores, modifier: (s:number, a:number)=>number): AbilityScores => {
   let newScore = {...score};
   AbilityNames.forEach(attribute => {
     newScore[attribute] = modifier(score[attribute], adjust[attribute]);

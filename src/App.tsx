@@ -18,6 +18,8 @@ const Body: React.FC = observer(() => {
   switch (Store.stage) {
     case "choose method": 
       return <ChooseMethod/>
+    case "roll scores": 
+      return <div className='two-cols'><RollScores/><ChooseRace/></div>
     case "choose race":
      return <ChooseRace/>;
     case "choose class":

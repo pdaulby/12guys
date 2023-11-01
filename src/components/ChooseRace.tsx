@@ -1,11 +1,9 @@
 import React from "react";
 import '../css/ChooseRace.css';
-import store from "../store/Store";
 import { Race, RaceAbilitiesSmall, RaceClassRestrictions, Races, RacialScoreAdjustment } from "../models/Race";
 import { AbilityNames } from "../models/AbilityScores";
-import Button from "./Button";
 
-const ChooseRace: React.FC = () => (<div className="RaceSelect">{Races.map(race => <RaceOverview key={race} race={race} />)}</div>);
+const ChooseRace: React.FC = () => (<div className="flex-column">{Races.map(race => <RaceOverview key={race} race={race} />)}</div>);
 
 const RaceOverview: React.FC<{race: Race}> = ({race}) => {
     return (
@@ -13,11 +11,9 @@ const RaceOverview: React.FC<{race: Race}> = ({race}) => {
             <div className="p1">
                 <div>{race}</div>
                 <RaceScoreModifier race={race}/>
-                <Button onClick={()=>store.chooseRace(race)}>Choose {race}</Button>
             </div>
             <div className="Description">
                 <RaceAbilities race={race}/>
-                <RaceClasses race={race}/>
             </div>
         </div>
     )

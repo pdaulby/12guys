@@ -4,7 +4,7 @@ import store from "../store/Store";
 import Button from "./Button";
 
 const ChooseMethod: React.FC = () => 
-    <div className="RaceSelect">
+    <div className="flex-column">
         <Method method={0}>The weakest (3d6 in order)</Method>
         <Method method={1}>Best chance at rare classes (4d6 drop highest, arrange to taste)</Method>
         <Method method={2}>Best chance at Ranger (3d6, 12 times, keep highest 6, arrange to taste)</Method>

@@ -34,7 +34,6 @@ const humanMax: AbilityScores = {
     Charisma: 18
 }
 
-
 const dwarfMin: AbilityScores = { ...humanMin,
     Strength: 8,
     Constitution: 12
@@ -154,7 +153,7 @@ export const RaceAbilitiesSmall = new Map<Race, String[]>([
     ['Gnome', ['Bonus to magic saves, Infravision', 'Greater Mining knowledge', '+1 to hit kobolds and goblins', 'large creatures get -4 to hit']],
     ['HalfElf', ['30% to resist sleep and charm spells', 'infravision', 'Find secret doors']],
     ['Halfling', ['Bonus to magic and poison saves', 'Infravision', 'Move silently']],
-    ['HalfOrc', ['Infravision', 'Minimum constitution 13']],
+    ['HalfOrc', ['Infravision']],
 ])
 
 
