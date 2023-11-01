@@ -16,17 +16,17 @@ const App: React.FC = () =>
 
 const Body: React.FC = observer(() => {
   switch (Store.stage) {
-    case -1: 
+    case "choose method": 
       return <ChooseMethod/>
-    case 0:
+    case "choose race":
      return <ChooseRace/>;
-    case 1:
+    case "choose class":
       return <RollScores/>
-    case 2: 
+    case "roll details": 
       return <RollDetails/>
-    case 3: 
+    case "choose allignment": 
       return <ChooseAllignment/>
-    case 4: 
+    case "end": 
       return <ShowDetails/>
   }
 })

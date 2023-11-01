@@ -51,14 +51,16 @@ class CharacterStore {
     }
     chooseAllignment = (allignment: Allignment) => this.allignment = allignment;
 
-    get stage() { return this.method === -1 ? -1
-        : !this.race? 0 
-        : !this.className? 1 
-        : !this.age? 2
-        : !this.allignment? 3
-        : 4; 
+    get stage(): Stage { return this.method === -1 ? "choose method"
+        : !this.race? "choose race" 
+        : !this.className? "choose class" 
+        : !this.age? "roll details"
+        : !this.allignment? "choose allignment"
+        : "end"; 
     }
 }
 
 const store = new CharacterStore();
 export default store;
+
+export type Stage = "choose method"|"choose race"|"choose class"|"roll details"|"choose allignment"|"end"
