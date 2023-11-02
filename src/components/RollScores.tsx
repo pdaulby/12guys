@@ -19,7 +19,6 @@ export const RollScores: React.FC = observer(() => {
         let score0 = createScores()
         return <ChoosableStatBlock {...score0} />
       case 1:
-        throw Error("need to rethink")
         let rolls1 = Array.from(Array(6)).map(()=>xD6Top3(4)).sort((a, b)=>b-a) as SixNumbers;
         if (ArrangeStore.initialValues.length === 0) { // there is an infinite loop without this if, i'm not sure why
             let raceClasses = RaceClassRestrictions.get(Store.race!)!;
@@ -28,7 +27,6 @@ export const RollScores: React.FC = observer(() => {
         }
         return <ArrangeToTaste />
       case 2:
-        throw Error("need to rethink")
         let fn = ()=>Math.max(...Array.from(Array(6)).map(()=>sumXDY(3,6)));
         let rolls2 =  Array.from(Array(6)).map(fn).sort((a, b)=>b-a) as SixNumbers;
         if (ArrangeStore.initialValues.length === 0) {    

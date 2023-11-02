@@ -1,7 +1,7 @@
 import React from "react";
 import '../css/StatBlock.css';
-import AbilityScores, { ToLog } from "../models/AbilityScores";
-import { MinumumScores, allowedClass, allowedClasses } from "../scripts/MinimumScores";
+import AbilityScores from "../models/AbilityScores";
+import { MinumumScores, allowedClass } from "../scripts/MinimumScores";
 import { Race, RaceClassRestrictions, RacialScoreAdjustment, RacialScoreMin } from "../models/Race";
 import store from "../store/Store";
 import { ClassName } from "../models/Class";
@@ -10,8 +10,15 @@ import { adjustScore, createAdjustedScore } from "../scripts/CalculateScores";
 
 export const ChoosableStatBlock: React.FC<AbilityScores> =
  (scores) => {
+    return (<div>
+        <StatBlock {...scores} />
+        <ChoosableClasses scores={scores}/>
+    </div>)
+}
+
+export const ChoosableClasses: React.FC<{scores: AbilityScores}> = ({scores}) => {
     let raceClasses = (Array.from(RacialScoreMin.entries()) as [Race, AbilityScores][])
-        .filter(([_, value]) => allowedClass(scores, value))
+        .filter(([race, value]) => allowedClass(adjustScore(scores, RacialScoreAdjustment.get(race)!, (s,a)=>a <= 0? s : s+a), value))
         .map(([race, _]) => [
             race, 
             RaceClassRestrictions.get(race)!
@@ -19,18 +26,15 @@ export const ChoosableStatBlock: React.FC<AbilityScores> =
             ] as [Race, ClassName[]]
         )
         .filter(([_, classes]) => classes.length !== 0);
-    
-    return (<div>
-        <StatBlock {...scores} />
-        <div className="ClassSelectContainer">
-            {raceClasses.length === 0 && "No viable classes"}
-            {raceClasses.map(([race,classes])=>(
-            <div>{race}: {classes.map(c=>(
-                <ClassSelect classType={c} race={race} scores={scores} />
-            ))}
-            </div>))}
-        </div>
-    </div>)
+    return (
+    <div className="ClassSelectContainer">
+        {raceClasses.length === 0 && "No viable classes"}
+        {raceClasses.map(([race,classes])=>(
+        <div>{race}: {classes.map(c=>(
+            <ClassSelect classType={c} race={race} scores={scores} />
+        ))}
+        </div>))}
+    </div>);
 }
 
 const viableClass = (race: Race, className: ClassName, scores: AbilityScores) => {

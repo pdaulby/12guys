@@ -56,8 +56,6 @@ class CharacterStore {
 
     get stage(): Stage { return this.method === -1 ? "choose method"
         : !this.abilityScores? "roll scores"
-        : !this.race? "choose race" 
-        : !this.className? "choose class" 
         : !this.age? "roll details"
         : !this.allignment? "choose allignment"
         : "end"; 
@@ -67,4 +65,4 @@ class CharacterStore {
 const store = new CharacterStore();
 export default store;
 
-export type Stage = "choose method"|"roll scores"|"choose race"|"choose class"|"roll details"|"choose allignment"|"end"
+export type Stage = "choose method"|"roll scores"|"roll details"|"choose allignment"|"end"

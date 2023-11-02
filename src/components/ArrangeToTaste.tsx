@@ -6,28 +6,20 @@ import { RacialScoreAdjustment, RacialScoreMax, RacialScoreMin } from "../models
 import ArrangeStore from "../store/ArrangeStore"
 import Button from "./Button";
 import { minMax } from "../scripts/MathUtil";
+import { ChoosableClasses } from "./StatBlock";
 
 const ArrangeToTaste: React.FC = observer(() => {
 
-    let min = RacialScoreMin.get(Store.race!)!;
-    let max = RacialScoreMax.get(Store.race!)!;
-    let adjustment = RacialScoreAdjustment.get(Store.race!)!;
     return <div className="arrange-to-taste">
-        <div className="StatBox">
-            <div>ability</div>
-            <div>value</div>
-            <div className="ScoreModifier">range</div>
-            <div>select</div>
-        </div>
         {AbilityNames.map(ability=>
         <div className="StatBox" key={ability}>
-            <div>{ability.slice(0,3)} {adjustmentVisual(adjustment[ability])}</div>
-            <div>{ArrangeStore.chosenScores[ability]} <small>({minMax(min[ability], max[ability], ArrangeStore.chosenScores[ability]+adjustment[ability])})</small></div>
-            <div className="ScoreModifier">{min[ability]}-{max[ability]}</div>
+            <div>{ability.slice(0,3)}</div>
+            <div>{ArrangeStore.chosenScores[ability]} </div>
             <div><Button onClick={()=>ArrangeStore.setScore(ability)}>set <b>{ArrangeStore.choosableValues[0]??0}</b></Button></div>
         </div>
         )}
         <div>{(ArrangeStore.choosableValues.length != 0) && "Remaining Scores: "}{ArrangeStore.choosableValues.join(', ')}</div>
+        <ChoosableClasses scores={ArrangeStore.chosenScores}/>
         <div>{ArrangeStore.possibleClasses.join(', ')}</div>
     </div>
 });

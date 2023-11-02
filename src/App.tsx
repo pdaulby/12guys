@@ -3,7 +3,7 @@ import './App.css';
 import RollScores from './components/RollScores';
 import Store from './store/Store';
 import { observer } from 'mobx-react';
-import ChooseRace from './components/ChooseRace';
+import RaceDetails from './components/ChooseRace';
 import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
 import ChooseMethod from './components/ChooseMethod';
@@ -19,11 +19,7 @@ const Body: React.FC = observer(() => {
     case "choose method": 
       return <ChooseMethod/>
     case "roll scores": 
-      return <div className='two-cols'><RollScores/><ChooseRace/></div>
-    case "choose race":
-     return <ChooseRace/>;
-    case "choose class":
-      return <RollScores/>
+      return <div className='two-cols'><RollScores/><RaceDetails/></div>
     case "roll details": 
       return <RollDetails/>
     case "choose allignment": 
