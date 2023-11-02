@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import AbilityScores, { AbilityName, SixNumbers } from "../models/AbilityScores"
+import AbilityScores, { AbilityName, AbilityNames, SixNumbers } from "../models/AbilityScores"
 import { ClassName } from "../models/Class";
 
 class ArrangeStoreClass {
@@ -24,10 +24,15 @@ class ArrangeStoreClass {
         this.possibleClasses = possibleClasses;
     }
     setScore(score: AbilityName) {
+        let wasEmpty = this.choosableValues.length === 0;
         let previous = this.chosenScores[score];
         this.chosenScores[score] = this.choosableValues.shift()??0;
         if (previous) {
             this.choosableValues.unshift(previous);
+        }
+        if (this.choosableValues.length === 1 && !wasEmpty) {
+            let unchosen = AbilityNames.find(a=>this.chosenScores[a] === 0)!;
+            this.chosenScores[unchosen] = this.choosableValues.shift()!;
         }
     }
 }
