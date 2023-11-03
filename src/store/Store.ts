@@ -12,7 +12,7 @@ import Allignment from '../models/Allignment';
 
 configure({enforceActions: "always"})
 class CharacterStore {
-    race?: Race;
+    race: Race = 'Human';
     className?: ClassName;
     abilityScores?: AbilityScores;
     allignment?: Allignment;

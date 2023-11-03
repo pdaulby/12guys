@@ -3,7 +3,7 @@ import './App.css';
 import RollScores from './components/RollScores';
 import Store from './store/Store';
 import { observer } from 'mobx-react';
-import RaceDetails from './components/ChooseRace';
+import RaceDetails from './components/RaceOverview';
 import { ChooseAllignment, RollDetails } from './components/RollDetails';
 import { ShowDetails } from './components/ShowDetails';
 import ChooseMethod from './components/ChooseMethod';
@@ -32,5 +32,5 @@ const Body: React.FC = observer(() => {
 
 export default App;
 
-const Header: React.FC = observer(() => <header className="App-header">{Store.race} {Store.className} </header>)
+const Header: React.FC = observer(() => <header className="App-header">{/*Store.className && */(Store.race+" "+Store.className)} </header>)
 

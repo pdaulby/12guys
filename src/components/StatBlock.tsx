@@ -7,14 +7,16 @@ import store from "../store/Store";
 import { ClassName } from "../models/Class";
 import Button from "./Button";
 import { adjustScore, createAdjustedScore } from "../scripts/CalculateScores";
+import { observer } from "mobx-react";
 
-export const ChoosableStatBlock: React.FC<AbilityScores> =
+export const ChoosableStatBlock: React.FC<AbilityScores> = observer(
  (scores) => {
+    let adjustedScores = createAdjustedScore(store.race, scores)
     return (<div>
-        <StatBlock {...scores} />
+        <StatBlock {...adjustedScores} />
         <ChoosableClasses scores={scores}/>
     </div>)
-}
+})
 
 export const ChoosableClasses: React.FC<{scores: AbilityScores}> = ({scores}) => {
     let raceClasses = (Array.from(RacialScoreMin.entries()) as [Race, AbilityScores][])
@@ -30,10 +32,12 @@ export const ChoosableClasses: React.FC<{scores: AbilityScores}> = ({scores}) =>
     <div className="ClassSelectContainer">
         {raceClasses.length === 0 && "No viable classes"}
         {raceClasses.map(([race,classes])=>(
-        <div>{race}: {classes.map(c=>(
-            <ClassSelect classType={c} race={race} scores={scores} />
+            <div onMouseEnter={()=>store.chooseRace(race)} onMouseLeave={()=>store.chooseRace('Human')}>
+                {race}: {classes.map(c=>(
+                <ClassSelect classType={c} race={race} scores={scores} />
+                ))}
+            </div>
         ))}
-        </div>))}
     </div>);
 }
 

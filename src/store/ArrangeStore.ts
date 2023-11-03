@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import AbilityScores, { AbilityName, AbilityNames, SixNumbers } from "../models/AbilityScores"
 import { ClassName } from "../models/Class";
 
@@ -14,7 +14,8 @@ class ArrangeStoreClass {
             initialValues: observable,
             possibleClasses: observable,
             setChoosableScores: action,
-            setScore: action
+            setScore: action,
+            scoresChosen: computed
         });
     }
     setChoosableScores(scores: SixNumbers, possibleClasses: ClassName[]) { 
@@ -35,6 +36,7 @@ class ArrangeStoreClass {
             this.chosenScores[unchosen] = this.choosableValues.shift()!;
         }
     }
+    get scoresChosen(){ return this.choosableValues.length === 0; }
 }
 const ArrangeStore = new ArrangeStoreClass();
 export default ArrangeStore;
