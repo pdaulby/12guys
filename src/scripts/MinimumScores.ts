@@ -58,7 +58,7 @@ const Ranger: AbilityScores = {
 
 const Druid: AbilityScores = {
     Strength: 6,
-    Dexterity: 6,
+    Dexterity: 0,
     Constitution: 12,
     Intelligence: 6,
     Wisdom: 15,
@@ -66,9 +66,9 @@ const Druid: AbilityScores = {
 }
 
 const Illusionist: AbilityScores = {
-    Strength: 6,
+    Strength: 0,
     Dexterity: 16,
-    Constitution: 6,
+    Constitution: 0,
     Intelligence: 15,
     Wisdom: 6,
     Charisma: 6
@@ -79,7 +79,7 @@ const Assassin: AbilityScores = {
     Dexterity: 11,
     Constitution: 6,
     Intelligence: 12,
-    Wisdom: 6,
+    Wisdom: 0,
     Charisma: 0
 }
 

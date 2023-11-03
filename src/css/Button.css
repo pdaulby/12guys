@@ -1,6 +1,6 @@
 
 
-.ClassSelect {
+.Select {
     color: white;
     background-color: #67799d;
     margin: 4px;
@@ -8,9 +8,10 @@
     display: inline-block;
     font-size: medium;
     text-decoration: underline;
+    user-select: none;
   }
   
-  .ClassSelect:hover {
+  .Select:hover {
     text-decoration: none;
     border-top: 1px;
     cursor: pointer;
@@ -24,6 +25,7 @@
     display: inline-block;
     font-size: medium;
     text-decoration: line-through;
+    user-select: none;
   }
   .DisabledSelect:hover {
     border-top: 1px;

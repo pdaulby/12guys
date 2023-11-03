@@ -26,7 +26,7 @@ const ArrangeToTaste: React.FC = observer(() => {
         )}
         <div>{(ArrangeStore.choosableValues.length != 0) && "Remaining Scores: "}{ArrangeStore.choosableValues.join(', ')}</div>
         <ChoosableClasses scores={ArrangeStore.chosenScores}/>
-        {ArrangeStore.scoresChosen && "TODO show class minimums lol"}
+        {!ArrangeStore.scoresChosen && "TODO show class minimums"}
     </div>
 });
 

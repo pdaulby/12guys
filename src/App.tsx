@@ -32,5 +32,5 @@ const Body: React.FC = observer(() => {
 
 export default App;
 
-const Header: React.FC = observer(() => <header className="App-header">{/*Store.className && */(Store.race+" "+Store.className)} </header>)
+const Header: React.FC = observer(() => <header className="App-header">{Store.className && (Store.race+" "+Store.className)} </header>)
 

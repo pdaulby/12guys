@@ -10,6 +10,7 @@ import ArrangeToTaste from "./ArrangeToTaste";
 import ArrangeStore from "../store/ArrangeStore"
 import { RaceClassRestrictions } from "../models/Race";
 import { possibleClasses } from "../scripts/MinimumScores";
+import ManualInput from "./ManualInput";
 
 export const RollScores: React.FC = observer(() => {
     switch (Store.method) {
@@ -41,9 +42,9 @@ export const RollScores: React.FC = observer(() => {
       case 4:
         let scores: AbilityScores[] = Array.from(Array(12)).map(()=>createScores());
         scores.sort(compareScores);
-        return (<TwelveGuys scores={scores}></TwelveGuys>);
+        return <TwelveGuys scores={scores}></TwelveGuys>
       case 5:
-        throw Error("should never happen")
+        return <ManualInput />
     }
   })
   

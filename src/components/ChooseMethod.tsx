@@ -16,7 +16,7 @@ const ChooseMethod: React.FC = () =>
 const Method: React.FC<{method: 0|1|2|3|4|5, children?: React.ReactNode}> = ({method, children}) =>
     <div className="RaceOverview">
         <div className="p1">
-            <Button disabled={[5].includes(method)} onClick={()=>store.chooseMethod(method)}>{"Method "+method}</Button>
+            <Button onClick={()=>store.chooseMethod(method)}>{"Method "+method}</Button>
         </div>
         <div className="Description">
             {children}

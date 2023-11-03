@@ -9,7 +9,7 @@ type buttonProps = {
 
 const Button: React.FC<buttonProps> = ({onClick, disabled, children, className}) =>
     <div 
-      className={disabled?'DisabledSelect ':'ClassSelect ' + className} 
+      className={disabled?'DisabledSelect ':'Select ' + className} 
       onClick={disabled?()=>{}:onClick}
     >
       {children}
